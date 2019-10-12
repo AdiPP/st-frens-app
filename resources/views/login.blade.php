@@ -28,9 +28,7 @@
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn">
-								LOGIN
-							</button>
+							<a href="{{ url('/dashboard', []) }}" class="login100-form-btn">LOGIN</a>
 						</div>
 
 						<a href="/daftar" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">

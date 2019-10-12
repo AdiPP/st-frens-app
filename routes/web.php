@@ -11,6 +11,8 @@
 |
 */
 
+// FRONTEND
+
 Route::get('/', function () {
     
     $katalog = [
@@ -386,4 +388,55 @@ Route::get('/daftar_franchisor', function () {
 
 Route::get('/daftar_agen', function () {
     return view('daftar_agen');
+});
+
+// DASHBOARD
+
+// DASHBOARD.PRODUK
+
+Route::get('/dashboard/produk', function () {
+    return view('backendFran.daftarProduk');
+});
+
+Route::get('/dashboard/produk/tambah', function () {
+    return view('backendFran.tambahProduk');
+});
+
+Route::get('/dashboard/produk/lihat', function () {
+    return view('backendFran.lihatProduk');
+});
+
+Route::get('/dashboard/produk/ubah', function () {
+    return view('backendFran.ubahProduk');
+});
+
+// DASHBOARD.PRODUK.PAKET
+
+Route::get('/dashboard/produk/paket/tambah', function () {
+    return view('backendFran.tambahPaketProduk');
+});
+
+// DASHBOARD.LAPORAN
+
+Route::get('/dashboard/laporan', function () {
+    return view('backendFran.laporanFranchise');
+});
+
+// DASHBOARAD.AGEN
+
+Route::get('/dashboard/agen', function () {
+    return view('backendFran.daftarAgen');
+});
+
+Route::get('/dashboard/agen/pantau', function () {
+    return view('backendFran.pantauAgen');
+});
+
+Route::get('/dashboard/agen/calonAgen', function () {
+    return view('backendFran.daftarCalonAgen');
+});
+
+// DASHBOARD.PESANAN
+Route::get('/dashboard/pesanan', function () {
+    return view('backendFran.daftarPesanan');
 });
