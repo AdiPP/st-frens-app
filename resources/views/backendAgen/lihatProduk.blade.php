@@ -1,4 +1,4 @@
-@extends('layouts.backend_layout')
+@extends('layouts.backendAgen_layout')
 
 @section('isi')
 <section class="content">
@@ -50,7 +50,7 @@
                 <div class="card">
                     <div class="body">
                         <p class="pull-left lead">PAKET PRODUK</p>
-                        <a class="pull-right btn" href="{{ url('/dashboard/produk/paket/tambah', []) }}">TAMBAH PAKET</a>
+                        {{-- <a class="pull-right btn" href="{{ url('/dashboard/franchisor/produk/paket/tambah', []) }}">TAMBAH PAKET</a> --}}
                         <div style="clear:both;"></div>
                         <div class="table-responsive">
                             <table class="table table-hover dashboard-task-infos">
@@ -97,7 +97,7 @@
                     </div>
                 </div>
                 <div>
-                    <a href="{{ url('/dashboard/produk/ubah', []) }}" class="btn btn-block btn-lg btn-primary waves-effect m-b-30">PERBARUI</a>
+                    <a href="{{ url('/dashboard/agen/produk/pesan', []) }}" class="btn btn-block btn-lg btn-primary waves-effect m-b-30">PESAN</a>
                 </div>
             </div>
         </div>

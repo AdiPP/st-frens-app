@@ -21,14 +21,14 @@
 
 					<div class="wrap-input100 validate-input" data-validate = "Password is required">
 						<span class="label-input100">Password</span>
-						<input class="input100" type="text" name="pass" placeholder="*************">
+						<input class="input100" type="password" name="pass" placeholder="*************">
 						<span class="focus-input100"></span>
 					</div>
 
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<a href="{{ url('/dashboard', []) }}" class="login100-form-btn">LOGIN</a>
+							<a href="{{ url('/session/agen', []) }}" class="login100-form-btn">LOGIN</a>
 						</div>
 
 						<a href="/daftar" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">

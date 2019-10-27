@@ -310,27 +310,27 @@
                 <ul class="list">
                     <li class="header">MAIN NAVIGATION</li>
                     <li>
-                        <a href="{{ url('/dashboard/franchisor/', []) }}">
+                        <a href="{{ url('/dashboard/agen/', []) }}">
                             <i class="material-icons">home</i>
                             <span>Dashboard</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="{{ url('/dashboard/franchisor/laporan', []) }}">
+                    {{-- <li>
+                        <a href="{{ url('/dashboard/laporan', []) }}">
                             <i class="material-icons">assignment</i>
                             <span>Laporan</span>
                         </a>
-                    </li>
+                    </li> --}}
                     <li class="header">PRODUK</li>
                     <li>
-                        <a href="{{ url('/dashboard/franchisor/produk', []) }}">
+                        <a href="{{ url('/dashboard/agen/produk', []) }}">
                             <i class="material-icons">shopping_basket</i>
                             <span>Produk</span>
                         </a>
                     </li>
                     <li class="header">AGEN</li>
                     <li>
-                        <a href="{{ url('/dashboard/franchisor/agen', []) }}">
+                        <a href="{{ url('/dashboard/agen', []) }}">
                             <i class="material-icons">supervisor_account</i>
                             <span>Agen</span>
                         </a>

@@ -148,15 +148,15 @@
 			<div class="container">
 				<div class="row justify-content-center mb-3 pb-3">
 					<div class="col-md-12 heading-section text-center ftco-animate">
-						<span class="subheading">Produk</span>
-						<h2 class="mb-4">Produk Yang Dijual</h2>
-						<p>Produk yang dijual dari brand ini</p>
+						<span class="subheading">Paket</span>
+						<h2 class="mb-4">Paket Yang Tersedia</h2>
+						<p>Paket yang tersedia dari brand ini</p>
 					</div>
 				</div>   		
 			</div>
 			<div class="container">
 				<div class="row justify-content-end mb-3 mx-3">
-					<button class="btn btn-primary " data-target="#tambahProduk" data-toggle="modal">+ Tambah Produk</button>
+					<button class="btn btn-primary " data-target="#tambahProduk" data-toggle="modal">+ Tambah Paket</button>
 				</div>
 				<div class="row">
 					@foreach($brand['produk'] as $produk)

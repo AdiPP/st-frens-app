@@ -120,9 +120,9 @@
 			<div class="container">
 				<div class="row justify-content-center mb-3 pb-3">
 					<div class="col-md-12 heading-section text-center ftco-animate">
-						<span class="subheading">Produk</span>
-						<h2 class="mb-4">Produk Yang Dijual</h2>
-						<p>Produk yang dijual dari brand ini</p>
+						<span class="subheading">Paket</span>
+						<h2 class="mb-4">Paket Yang Tersedia</h2>
+						<p>Paket yang tersedia dari brand ini</p>
 					</div>
 				</div>   		
 			</div>
@@ -139,7 +139,7 @@
 								<div>{{$produk['harga_produk']}}</div>
 								<div class="bottom-area d-flex px-3">
 									<div class="m-auto d-flex">
-										<a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+										<a href="{{ url('/pemesanan', []) }}" class="buy-now d-flex justify-content-center align-items-center mx-1">
 											<span><i class="ion-ios-cart"></i></span>
 										</a>
 									</div>
@@ -177,7 +177,7 @@
 			</div>
 		</div>
 
-		<section class="ftco-section" id="katalog">
+		{{-- <section class="ftco-section" id="katalog">
 			<div class="container">	
 				<div class="row justify-content-center mb-5 pb-3">
 					<div class="col-md-7 heading-section ftco-animate text-center">
@@ -212,7 +212,7 @@
 					</div>
 				</div>
 			</div>
-		</section>
+		</section> --}}
 
 
 	

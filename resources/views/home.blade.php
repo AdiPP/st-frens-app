@@ -230,7 +230,7 @@
 				@foreach($katalogs as $katalog )
 				<div class="col-md-6 col-lg-3 ftco-animate">
 					<div class="product">
-						<a href="FrensDetail.html" class="img-prod"><img class="img-fluid" src="{{asset($katalog['path_foto'])}}" alt="Colorlib Template">
+						<a href="{{ url('/detail/'.$katalog['id_brand'], []) }}" class="img-prod"><img class="img-fluid" src="{{asset($katalog['path_foto'])}}" alt="Colorlib Template">
 							<!-- <span class="status">30%</span> -->
 							<div class="overlay"></div>
 						</a>

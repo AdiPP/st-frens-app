@@ -63,7 +63,7 @@
 							<tbody>
 								<tr class="text-center">
 									
-									<td class="image-prod"><div class="img" style="background-image:url(images/product-1.jpg);"></div></td>
+									<td class="image-prod"><div class="img" style="background-image:url({{asset('images/product-1.jpg')}});"></div></td>
 									
 									<td class="product-name">
 										<h3>Ananda Arief</h3>
@@ -106,7 +106,7 @@
 			</div>
 		</section>
 
-		<section class="ftco-section" id="katalog">
+		{{-- <section class="ftco-section" id="katalog">
 			<div class="container">	
 				<div class="row justify-content-center mb-5 pb-3">
 					<div class="col-md-7 heading-section ftco-animate text-center">
@@ -141,7 +141,7 @@
 					</div>
 				</div>
 			</div>
-		</section>
+		</section> --}}
 @endsection	
 
 @section('add_javascript')
@@ -151,7 +151,7 @@
 	var myChart = new Chart(ctx, {
 		type: 'line',
 		data: {
-			labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July','Maret','April'],
+			labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July','Agustus','September'],
 			datasets: [{
 				label: 'Pemesanan',
 				data: [12, 19, 3, 5, 2, 3,5,1,0],

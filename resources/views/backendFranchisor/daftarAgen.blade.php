@@ -15,7 +15,7 @@
                                 AGEN
                                 {{-- <small>Basic example without any additional modification classes</small> --}}
                             </h2>
-                            <a class="btn btn-lg btn-default waves-effect pull-right" href="{{ url('/dashboard/agen/calonAgen', []) }}">CALON AGEN</a>
+                            <a class="btn btn-lg btn-default waves-effect pull-right" href="{{ url('/dashboard/franchisor/agen/calonAgen', []) }}">CALON AGEN</a>
                             <div style="clear:both;"></div>
                             {{-- <ul class="header-dropdown m-r--5">
                                 <li class="dropdown">

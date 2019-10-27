@@ -1,7 +1,7 @@
 @extends('layouts.backend_layout')
 
 @section('isi')
-<form action="{{ url('/dashboard/produk/lihat', []) }}">
+<form action="{{ url('/dashboard/franchisor/produk/lihat', []) }}">
 <section class="content">
     <div class="container-fluid">
         <div class="block-header">

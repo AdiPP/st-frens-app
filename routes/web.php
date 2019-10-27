@@ -108,15 +108,25 @@ Route::get('/detail/{id_produk}', function ($id_produk) {
             'deskripsi'=>'Franchise Minuman Populer Dengan Modal Dibawah 13 Juta.',
             'produk'=>[
                 [
-                    'nama_produk'=>'Bubuk Coklat',
+                    'nama_produk'=>'PAKET A',
                     'path_foto_produk'=>'images/frens_product_2.jpg',
-                    'harga_produk'=>'Rp. 5.000',
-                    'deskripsi_produk'=>'Bubuk Ini adalah Bubuk Khusus produk ini dibuat dengan bubuk rahasia.'
+                    'harga_produk'=>'Rp. 9.000.000',
+                    'deskripsi_produk'=>'Paket lengkap, Training Sumberdaya Manusia (SDM) Berupa pembekalan video SOP, Seragam / Outfit Lengkap media promosi online dan offline bahan baku awal semua paket SOP lengkap berupa video pembelajaran.'
                 ],[
-                    'nama_produk'=>'Cup',
+                    'nama_produk'=>'PAKET B',
                     'path_foto_produk'=>'images/frens_product_2.jpg',
-                    'harga_produk'=>'Rp. 500',
-                    'deskripsi_produk'=>'Cup Ini adalah Cup Khusus produk ini dibuat dengan cara rahasia.'
+                    'harga_produk'=>'Rp. 10.0000.000',
+                    'deskripsi_produk'=>''
+                ],[
+                    'nama_produk'=>'PAKET C',
+                    'path_foto_produk'=>'images/frens_product_2.jpg',
+                    'harga_produk'=>'Rp. 11.0000.000',
+                    'deskripsi_produk'=>''
+                ],[
+                    'nama_produk'=>'PAKET D',
+                    'path_foto_produk'=>'images/frens_product_2.jpg',
+                    'harga_produk'=>'Rp. 12.0000.000',
+                    'deskripsi_produk'=>''
                 ]
             ]
         ];
@@ -154,29 +164,75 @@ Route::get('/detail/{id_produk}', function ($id_produk) {
         ];
         return view('detail_franchisor',['brand'=>$brand,'agens'=>$agens]);
     }elseif(session('jabatan') == 'agen'){
-        $brand=[
-            'nama_brand'=>'Passion Of Chocolate',
-            'path_foto_brand'=>'images/frens_product_1.jpg',
-            'bintang'=>3,
-            'lokasi'=>'JABODETABEK',
-            'kontak'=>'08123721721',
-            'harga'=>'Rp. 10.000.000',
-            'deskripsi'=>'Franchise Minuman Populer Dengan Modal Dibawah 13 Juta.',
-            'status'=>'Menunggu Konfirmasi',
-            'produk'=>[
-                [
-                    'nama_produk'=>'Bubuk Coklat',
-                    'path_foto_produk'=>'images/frens_product_2.jpg',
-                    'harga_produk'=>'Rp. 5.000',
-                    'deskripsi_produk'=>'Bubuk Ini adalah Bubuk Khusus produk ini dibuat dengan bubuk rahasia.'
-                ],[
-                    'nama_produk'=>'Cup',
-                    'path_foto_produk'=>'images/frens_product_2.jpg',
-                    'harga_produk'=>'Rp. 500',
-                    'deskripsi_produk'=>'Cup Ini adalah Cup Khusus produk ini dibuat dengan cara rahasia.'
+        if ($id_produk == 1) {
+            $brand=[
+                'nama_brand'=>'Passion Of Chocolate',
+                'path_foto_brand'=>'images/frens_product_1.jpg',
+                'bintang'=>3,
+                'lokasi'=>'JABODETABEK',
+                'kontak'=>'08123721721',
+                'harga'=>'Rp. 10.000.000',
+                'deskripsi'=>'Franchise Minuman Populer Dengan Modal Dibawah 13 Juta.',
+                'status'=>'Terkonfirmasi',
+                'produk'=>[
+                    [
+                        'nama_produk'=>'PAKET A',
+                        'path_foto_produk'=>'images/frens_product_2.jpg',
+                        'harga_produk'=>'Rp. 9.000.000',
+                        'deskripsi_produk'=>'Paket lengkap, Training Sumberdaya Manusia (SDM) Berupa pembekalan video SOP, Seragam / Outfit Lengkap media promosi online dan offline bahan baku awal semua paket SOP lengkap berupa video pembelajaran.'
+                    ],[
+                        'nama_produk'=>'PAKET B',
+                        'path_foto_produk'=>'images/frens_product_2.jpg',
+                        'harga_produk'=>'Rp. 10.0000.000',
+                        'deskripsi_produk'=>''
+                    ],[
+                        'nama_produk'=>'PAKET C',
+                        'path_foto_produk'=>'images/frens_product_2.jpg',
+                        'harga_produk'=>'Rp. 11.0000.000',
+                        'deskripsi_produk'=>''
+                    ],[
+                        'nama_produk'=>'PAKET D',
+                        'path_foto_produk'=>'images/frens_product_2.jpg',
+                        'harga_produk'=>'Rp. 12.0000.000',
+                        'deskripsi_produk'=>''
+                    ]
                 ]
-            ]
-        ];
+            ];
+        } elseif ($id_produk == 2) {
+            $brand=[
+                'nama_brand'=>'Passion Of Chocolate',
+                'path_foto_brand'=>'images/frens_product_1.jpg',
+                'bintang'=>3,
+                'lokasi'=>'JABODETABEK',
+                'kontak'=>'08123721721',
+                'harga'=>'Rp. 10.000.000',
+                'deskripsi'=>'Franchise Minuman Populer Dengan Modal Dibawah 13 Juta.',
+                'status'=>'Menunggu Konfirmasi',
+                'produk'=>[
+                    [
+                        'nama_produk'=>'PAKET A',
+                        'path_foto_produk'=>'images/frens_product_2.jpg',
+                        'harga_produk'=>'Rp. 9.000.000',
+                        'deskripsi_produk'=>'Paket lengkap, Training Sumberdaya Manusia (SDM) Berupa pembekalan video SOP, Seragam / Outfit Lengkap media promosi online dan offline bahan baku awal semua paket SOP lengkap berupa video pembelajaran.'
+                    ],[
+                        'nama_produk'=>'PAKET B',
+                        'path_foto_produk'=>'images/frens_product_2.jpg',
+                        'harga_produk'=>'Rp. 10.0000.000',
+                        'deskripsi_produk'=>''
+                    ],[
+                        'nama_produk'=>'PAKET C',
+                        'path_foto_produk'=>'images/frens_product_2.jpg',
+                        'harga_produk'=>'Rp. 11.0000.000',
+                        'deskripsi_produk'=>''
+                    ],[
+                        'nama_produk'=>'PAKET D',
+                        'path_foto_produk'=>'images/frens_product_2.jpg',
+                        'harga_produk'=>'Rp. 12.0000.000',
+                        'deskripsi_produk'=>''
+                    ]
+                ]
+            ];
+        }
         return view('detail_agen',['brand'=>$brand]);
     }else{
         $brand=[
@@ -185,19 +241,29 @@ Route::get('/detail/{id_produk}', function ($id_produk) {
             'bintang'=>3,
             'lokasi'=>'JABODETABEK',
             'kontak'=>'08123721721',
-            'harga'=>'Rp. 10.000.000',
+            'harga'=>'Rp.9.000.000',
             'deskripsi'=>'Franchise Minuman Populer Dengan Modal Dibawah 13 Juta.',
             'produk'=>[
                 [
-                    'nama_produk'=>'Bubuk Coklat',
+                    'nama_produk'=>'PAKET A',
                     'path_foto_produk'=>'images/frens_product_2.jpg',
-                    'harga_produk'=>'Rp. 5.000',
-                    'deskripsi_produk'=>'Bubuk Ini adalah Bubuk Khusus produk ini dibuat dengan bubuk rahasia.'
+                    'harga_produk'=>'Rp. 9.000.000',
+                    'deskripsi_produk'=>'Paket lengkap, Training Sumberdaya Manusia (SDM) Berupa pembekalan video SOP, Seragam / Outfit Lengkap media promosi online dan offline bahan baku awal semua paket SOP lengkap berupa video pembelajaran.'
                 ],[
-                    'nama_produk'=>'Cup',
+                    'nama_produk'=>'PAKET B',
                     'path_foto_produk'=>'images/frens_product_2.jpg',
-                    'harga_produk'=>'Rp. 500',
-                    'deskripsi_produk'=>'Cup Ini adalah Cup Khusus produk ini dibuat dengan cara rahasia.'
+                    'harga_produk'=>'Rp. 10.0000.000',
+                    'deskripsi_produk'=>''
+                ],[
+                    'nama_produk'=>'PAKET C',
+                    'path_foto_produk'=>'images/frens_product_2.jpg',
+                    'harga_produk'=>'Rp. 11.0000.000',
+                    'deskripsi_produk'=>''
+                ],[
+                    'nama_produk'=>'PAKET D',
+                    'path_foto_produk'=>'images/frens_product_2.jpg',
+                    'harga_produk'=>'Rp. 12.0000.000',
+                    'deskripsi_produk'=>''
                 ]
             ]
         ];
@@ -293,29 +359,29 @@ Route::get('/pemesanan', function () {
             [
                 'path_foto'=>'images/frens_product_1.jpg',
                 'nama_pembeli'=>'Ananda Arief',
-                'nama_produk'=>'Bubuk Coklat',
+                'nama_produk'=>'Paket A',
                 'alamat'=>'Perum Berkoh K 77',
-                'harga'=>5000,
+                'harga'=>90000000,
             ],
         ];
         $riwayats=[
             [
                 'path_foto'=>'images/frens_product_1.jpg',
                 'nama_pembeli'=>'Ananda Arief',
-                'nama_produk'=>'Bubuk Coklat',
+                'nama_produk'=>'Paket A',
                 'alamat'=>'Perum Berkoh K 77',
-                'harga'=>5000,
-                'kuantitas'=>2,
-                'total'=>10000,
+                'harga'=>90000000,
+                'kuantitas'=>1,
+                'total'=>90000000,
                 'status'=>'Mengunggu Konfirmasi'
             ],[
                 'path_foto'=>'images/frens_product_1.jpg',
                 'nama_pembeli'=>'Ananda Arief',
                 'nama_produk'=>'Bubuk Coklat',
                 'alamat'=>'Perum Berkoh K 77',
-                'harga'=>5000,
-                'kuantitas'=>2,
-                'total'=>10000,
+                'harga'=>90000000,
+                'kuantitas'=>1,
+                'total'=>90000000,
                 'status'=>'Terkonfirmasi'
             ],
         ];
@@ -325,20 +391,20 @@ Route::get('/pemesanan', function () {
             [
                 'path_foto'=>'images/frens_product_1.jpg',
                 'nama_pembeli'=>'Ananda Arief',
-                'nama_produk'=>'Bubuk Coklat',
+                'nama_produk'=>'Paket A',
                 'alamat'=>'Perum Berkoh K 77',
-                'harga'=>5000,
-                'kuantitas'=>2,
-                'total'=>10000,
+                'harga'=>90000000,
+                'kuantitas'=>1,
+                'total'=>90000000,
                 'status'=>'Mengunggu Konfirmasi'
             ],[
                 'path_foto'=>'images/frens_product_1.jpg',
                 'nama_pembeli'=>'Ananda Arief',
                 'nama_produk'=>'Bubuk Coklat',
                 'alamat'=>'Perum Berkoh K 77',
-                'harga'=>5000,
-                'kuantitas'=>2,
-                'total'=>10000,
+                'harga'=>9000000,
+                'kuantitas'=>1,
+                'total'=>9000000,
                 'status'=>'Terkonfirmasi'
             ],
         ];
@@ -392,51 +458,74 @@ Route::get('/daftar_agen', function () {
 
 // DASHBOARD
 
+Route::get('/dashboard/franchisor', function () {
+    return view('backendFranchisor.dashboard');
+});
+
 // DASHBOARD.PRODUK
 
-Route::get('/dashboard/produk', function () {
-    return view('backendFran.daftarProduk');
+Route::get('/dashboard/franchisor/produk', function () {
+    return view('backendFranchisor.daftarProduk');
 });
 
-Route::get('/dashboard/produk/tambah', function () {
-    return view('backendFran.tambahProduk');
+Route::get('/dashboard/franchisor/produk/tambah', function () {
+    return view('backendFranchisor.tambahProduk');
 });
 
-Route::get('/dashboard/produk/lihat', function () {
-    return view('backendFran.lihatProduk');
+Route::get('/dashboard/franchisor/produk/lihat', function () {
+    return view('backendFranchisor.lihatProduk');
 });
 
-Route::get('/dashboard/produk/ubah', function () {
-    return view('backendFran.ubahProduk');
+Route::get('/dashboard/franchisor/produk/ubah', function () {
+    return view('backendFranchisor.ubahProduk');
 });
 
 // DASHBOARD.PRODUK.PAKET
 
-Route::get('/dashboard/produk/paket/tambah', function () {
-    return view('backendFran.tambahPaketProduk');
+Route::get('/dashboard/franchisor/produk/paket/tambah', function () {
+    return view('backendFranchisor.tambahPaketProduk');
 });
 
 // DASHBOARD.LAPORAN
 
-Route::get('/dashboard/laporan', function () {
-    return view('backendFran.laporanFranchise');
+Route::get('/dashboard/franchisor/laporan', function () {
+    return view('backendFranchisor.laporanFranchise');
 });
 
 // DASHBOARAD.AGEN
 
-Route::get('/dashboard/agen', function () {
-    return view('backendFran.daftarAgen');
+Route::get('/dashboard/franchisor/agen', function () {
+    return view('backendFranchisor.daftarAgen');
 });
 
-Route::get('/dashboard/agen/pantau', function () {
-    return view('backendFran.pantauAgen');
+Route::get('/dashboard/franchisor/agen/pantau', function () {
+    return view('backendFranchisor.pantauAgen');
 });
 
-Route::get('/dashboard/agen/calonAgen', function () {
-    return view('backendFran.daftarCalonAgen');
+Route::get('/dashboard/franchisor/agen/calonAgen', function () {
+    return view('backendFranchisor.daftarCalonAgen');
 });
 
 // DASHBOARD.PESANAN
-Route::get('/dashboard/pesanan', function () {
-    return view('backendFran.daftarPesanan');
+Route::get('/dashboard/franchisor/pesanan', function () {
+    return view('backendFranchisor.daftarPesanan');
+});
+
+// DASHBOARD AGEN
+Route::get('/dashboard/agen', function () {
+    return view('backendAgen.dashboard');
+});
+
+// DASHBOARD AGEN.PRODUK
+
+Route::get('/dashboard/agen/produk', function () {
+    return view('backendAgen.daftarProduk');
+});
+
+Route::get('/dashboard/agen/produk/lihat', function () {
+    return view('backendAgen.lihatProduk');
+});
+
+Route::get('/dashboard/agen/produk/pesan', function () {
+    return view('backendAgen.pesanProduk');
 });

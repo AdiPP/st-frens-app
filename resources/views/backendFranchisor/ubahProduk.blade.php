@@ -1,11 +1,11 @@
 @extends('layouts.backend_layout')
 
 @section('isi')
-<form action="{{ url('/dashboard/produk', []) }}">
+<form action="{{ url('/dashboard/franchisor/produk', []) }}">
 <section class="content">
     <div class="container-fluid">
         <div class="block-header">
-            <h2>TAMBAH PRODUK</h2>
+            <h2>UBAH PRODUK 1</h2>
         </div>
         <!-- Input -->
         <div class="row clearfix">
@@ -38,7 +38,7 @@
                                 <div class="col-lg-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="" />
+                                            <input type="text" class="form-control" placeholder="" value="PRODUK 1">
                                         </div>
                                     </div>
                                 </div>
@@ -50,7 +50,7 @@
                                 <div class="col-lg-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="" />
+                                            <input type="text" class="form-control" placeholder="" value="Purbalingga">
                                         </div>
                                     </div>
                                 </div>
@@ -62,7 +62,7 @@
                                 <div class="col-lg-10">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="" />
+                                            <input type="text" class="form-control" placeholder="" value="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, ducimus!"/>
                                         </div>
                                     </div>
                                 </div>

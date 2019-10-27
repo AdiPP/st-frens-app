@@ -119,8 +119,8 @@
 				<div class="row justify-content-center mb-3 pb-3">
 					<div class="col-md-12 heading-section text-center ftco-animate">
 						<span class="subheading">Produk</span>
-						<h2 class="mb-4">Produk Yang Dijual</h2>
-						<p>Produk yang dijual dari brand ini</p>
+						<h2 class="mb-4">Paket</h2>
+						<p>Paket yang tersedia dari brand ini</p>
 					</div>
 				</div>   		
 			</div>
@@ -168,7 +168,7 @@
 			</div>
 		</div>
 
-	<section class="ftco-section testimony-section">
+	{{-- <section class="ftco-section testimony-section">
 		<div class="container">
 			<div class="row justify-content-center mb-5 pb-3">
 				<div class="col-md-7 heading-section ftco-animate text-center">
@@ -284,10 +284,10 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> --}}
 
 
-	<section class="ftco-section">
+	{{-- <section class="ftco-section">
 		<div class="container">
 			<div class="row justify-content-center mb-3 pb-3">
 				<div class="col-md-12 heading-section text-center ftco-animate">
@@ -302,7 +302,7 @@
 				@foreach($brandSerupa as $brand)
 				<div class="col-md-6 col-lg-3 ftco-animate">
 					<div class="product">
-						a href="#" class="img-prod"><img class="img-fluid" src="{{asset($brand['path_foto'])}}" alt="Colorlib Template">
+						<a href="#" class="img-prod"><img class="img-fluid" src="{{asset($brand['path_foto'])}}" alt="Colorlib Template">
 							<div class="overlay"></div>
 						</a>
 						<div class="text py-3 pb-4 px-3 text-center">
@@ -397,7 +397,7 @@
 				@endforeach			
 			</div>
 		</div>
-    </section>
+    </section> --}}
 @endsection	
 
 @section('add_javascript')

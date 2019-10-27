@@ -15,7 +15,7 @@
                             PRODUK
                             <!-- <small>Basic example without any additional modification classes</small> -->
                         </h2>
-                        <a href="{{ url('/dashboard/produk/tambah', []) }}" class="btn btn-lg btn-default waves-effect pull-right">TAMBAH PRODUK</a>
+                        <a href="{{ url('/dashboard/franchisor/produk/tambah', []) }}" class="btn btn-lg btn-default waves-effect pull-right">TAMBAH PRODUK</a>
                         <div style="clear: both;"></div>
                         <!-- <ul class="header-dropdown m-r--5">
                             <li class="dropdown">
@@ -47,8 +47,8 @@
                                     <td>Produk 1</td>
                                     <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo, et.</td>
                                     <td>Rp. 100.000 - Rp. 1.000.000</td>
-                                    <td><a href="{{ url('/dashboard/produk/lihat', []) }}"><i class="material-icons">remove_red_eye</i></a></td>
-                                    <td><a href="{{ url('/dashboard/produk/ubah', []) }}"><i class="material-icons">mode_edit</i></a></td>
+                                    <td><a href="{{ url('/dashboard/franchisor/produk/lihat', []) }}"><i class="material-icons">remove_red_eye</i></a></td>
+                                    <td><a href="{{ url('/dashboard/franchisor/produk/ubah', []) }}"><i class="material-icons">mode_edit</i></a></td>
                                     <td><a href="{{ url('#', []) }}"><i class="material-icons">delete</i></a></td>
                                 </tr>
                             </tbody>

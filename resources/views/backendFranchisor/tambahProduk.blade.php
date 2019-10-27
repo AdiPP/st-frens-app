@@ -1,11 +1,11 @@
 @extends('layouts.backend_layout')
 
 @section('isi')
-<form action="{{ url('/dashboard/produk', []) }}">
+<form action="{{ url('/dashboard/franchisor/produk', []) }}">
 <section class="content">
     <div class="container-fluid">
         <div class="block-header">
-            <h2>UBAH PRODUK 1</h2>
+            <h2>TAMBAH PRODUK</h2>
         </div>
         <!-- Input -->
         <div class="row clearfix">
@@ -31,43 +31,46 @@
                     </div>
                     <div class="body">
                         <!-- <h2 class="card-inside-title">Basic Examples</h2> -->
-                            <div class="row clearfix">
-                                <div class="col-lg-2 form-control-label">
-                                    <label for="" class="pull-left">Nama Produk</label>
-                                </div>
-                                <div class="col-lg-10">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="" value="PRODUK 1">
-                                        </div>
+                        <div class="row clearfix">
+                            <div class="col-lg-2 form-control-label">
+                                <label for="" class="pull-left">Nama Produk</label>
+                            </div>
+                            <div class="col-lg-10">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <input type="text" class="form-control" placeholder="" />
                                     </div>
                                 </div>
                             </div>
-                            <div class="row clearfix">
-                                <div class="col-lg-2 form-control-label">
-                                    <label for="" class="pull-left">Lokasi</label>
-                                </div>
-                                <div class="col-lg-10">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="" value="Purbalingga">
-                                        </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-lg-2 form-control-label">
+                                <label for="" class="pull-left">Lokasi</label>
+                            </div>
+                            <div class="col-lg-10">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <input type="text" class="form-control" placeholder="" />
                                     </div>
                                 </div>
                             </div>
-                            <div class="row clearfix">
-                                <div class="col-lg-2 form-control-label">
-                                    <label for="" class="pull-left">Deskripsi Produk</label>
-                                </div>
-                                <div class="col-lg-10">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="" value="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, ducimus!"/>
-                                        </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-lg-2 form-control-label">
+                                <label for="" class="pull-left">Deskripsi Produk</label>
+                            </div>
+                            <div class="col-lg-10">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <input type="text" class="form-control" placeholder="" />
                                     </div>
                                 </div>
                             </div>
+                        </div>
                     </div>
+                </div>
+                <div>
+                    <a href="{{ url('/dashboard/agen/produk/pesan', []) }}" class="btn btn-block btn-lg btn-primary waves-effect m-b-30">TAMBAH</a>
                 </div>
             </div>
         </div>
