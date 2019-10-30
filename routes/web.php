@@ -108,6 +108,7 @@ Route::get('/detail/{id_produk}', function ($id_produk) {
             'deskripsi'=>'Franchise Minuman Populer Dengan Modal Dibawah 13 Juta.',
             'produk'=>[
                 [
+                    'id_paket'=>'1',
                     'nama_produk'=>'PAKET A',
                     'path_foto_produk'=>'images/frens_product_2.jpg',
                     'harga_produk'=>'Rp. 9.000.000',
@@ -166,6 +167,7 @@ Route::get('/detail/{id_produk}', function ($id_produk) {
     }elseif(session('jabatan') == 'agen'){
         if ($id_produk == 1) {
             $brand=[
+                'id_produk'=>'1',
                 'nama_brand'=>'Passion Of Chocolate',
                 'path_foto_brand'=>'images/frens_product_1.jpg',
                 'bintang'=>3,
@@ -176,55 +178,25 @@ Route::get('/detail/{id_produk}', function ($id_produk) {
                 'status'=>'Terkonfirmasi',
                 'produk'=>[
                     [
+                        'id_paket'=>'1',
                         'nama_produk'=>'PAKET A',
                         'path_foto_produk'=>'images/frens_product_2.jpg',
                         'harga_produk'=>'Rp. 9.000.000',
                         'deskripsi_produk'=>'Paket lengkap, Training Sumberdaya Manusia (SDM) Berupa pembekalan video SOP, Seragam / Outfit Lengkap media promosi online dan offline bahan baku awal semua paket SOP lengkap berupa video pembelajaran.'
                     ],[
+                        'id_paket'=>'1',
                         'nama_produk'=>'PAKET B',
                         'path_foto_produk'=>'images/frens_product_2.jpg',
                         'harga_produk'=>'Rp. 10.0000.000',
                         'deskripsi_produk'=>''
                     ],[
+                        'id_paket'=>'1',
                         'nama_produk'=>'PAKET C',
                         'path_foto_produk'=>'images/frens_product_2.jpg',
                         'harga_produk'=>'Rp. 11.0000.000',
                         'deskripsi_produk'=>''
                     ],[
-                        'nama_produk'=>'PAKET D',
-                        'path_foto_produk'=>'images/frens_product_2.jpg',
-                        'harga_produk'=>'Rp. 12.0000.000',
-                        'deskripsi_produk'=>''
-                    ]
-                ]
-            ];
-        } elseif ($id_produk == 2) {
-            $brand=[
-                'nama_brand'=>'Passion Of Chocolate',
-                'path_foto_brand'=>'images/frens_product_1.jpg',
-                'bintang'=>3,
-                'lokasi'=>'JABODETABEK',
-                'kontak'=>'08123721721',
-                'harga'=>'Rp. 10.000.000',
-                'deskripsi'=>'Franchise Minuman Populer Dengan Modal Dibawah 13 Juta.',
-                'status'=>'Menunggu Konfirmasi',
-                'produk'=>[
-                    [
-                        'nama_produk'=>'PAKET A',
-                        'path_foto_produk'=>'images/frens_product_2.jpg',
-                        'harga_produk'=>'Rp. 9.000.000',
-                        'deskripsi_produk'=>'Paket lengkap, Training Sumberdaya Manusia (SDM) Berupa pembekalan video SOP, Seragam / Outfit Lengkap media promosi online dan offline bahan baku awal semua paket SOP lengkap berupa video pembelajaran.'
-                    ],[
-                        'nama_produk'=>'PAKET B',
-                        'path_foto_produk'=>'images/frens_product_2.jpg',
-                        'harga_produk'=>'Rp. 10.0000.000',
-                        'deskripsi_produk'=>''
-                    ],[
-                        'nama_produk'=>'PAKET C',
-                        'path_foto_produk'=>'images/frens_product_2.jpg',
-                        'harga_produk'=>'Rp. 11.0000.000',
-                        'deskripsi_produk'=>''
-                    ],[
+                        'id_paket'=>'1',
                         'nama_produk'=>'PAKET D',
                         'path_foto_produk'=>'images/frens_product_2.jpg',
                         'harga_produk'=>'Rp. 12.0000.000',
@@ -311,40 +283,34 @@ Route::get('/detail/{id_produk}', function ($id_produk) {
 
         return view('detail',['brand'=>$brand,'testimonis'=>$testimonis,'brandSerupa'=>$brandSerupa]);
     }
-});
+})->name('detail_produk');
 
-Route::get('detail/{id_brand}/riwayat_agen/{id_agen}', function ($id_brand,$id_agen) {
-    $brand=[
-        'nama_brand'=>'Passion Of Chocolate'
-    ];
-    $agen = [
-        'id_agen'=>1,
-        'path_foto'=>'images/person_1.jpg',
-        'bintang'=>5,
-        'nama'=>'Tejo Anusapati',
-        'lokasi'=>'SEMARANG'
-    ];   
+Route::middleware('checkIsRole:franchisor')->get('detail/{id_brand}/riwayat_agen/{id_agen}/{jawaban}','FranchisorController@konfirmasiAgen')->name('konfirmasi_jawaban_agen');
 
-    $testimonis = [
-        [
-            'path_foto'=>'images/person_1.jpg',
-            'bintang'=>5,
-            'deskripsi'=>'Performanya bagus',
-            'nama'=>'Ahmad Yuli',
-            'brand'=>'King Choco'
-        ],[
-            'path_foto'=>'images/person_1.jpg',
-            'bintang'=>5,
-            'deskripsi'=>'Produk saya laku',
-            'nama'=>'Bambang Rino',
-            'brand'=>'Fiesta Nugget'
-        ]
-    ]; 
-    return view('riwayat_agen',['brand'=>$brand,'agen'=>$agen,'testimonis'=>$testimonis]);
-});
+Route::middleware('checkIsRole:franchisor')->get('detail/{id_brand}/riwayat_agen/{id_agen}','FranchisorController@lihatAgen')->name('konfirmasi_agen');
+
+Route::post('detail/{id_brand}','PemesananController@pesanPaket')->name('post_pesan_paket');
+
 
 Route::get('/session/{jabatan}', function ($jabatan) {
     Session::put('jabatan',$jabatan);
+    return redirect()->route('home');
+});
+
+Route::get('/sessionUser/{id_user}', function (App\Models\User $id_user) {
+    Session::put('jabatan',$id_user->jabatan);
+    Session::put('id_user',$id_user->id_user);
+    switch ($id_user->jabatan) {
+        case 'agen':
+            # code...
+            Session::put('id_agen',$id_user->agen->id_agen);
+            break;
+        
+        default:
+            # code...
+            Session::put('id_frans',$id_user->franchisor->id_frans);
+            break;
+    }
     return redirect()->route('home');
 });
 
@@ -353,80 +319,25 @@ Route::get('/logout', function () {
     return redirect()->route('home');
 });
 
-Route::get('/pemesanan', function () {
-    if(session('jabatan')=='agen'){
-        $keranjang=[
-            [
-                'path_foto'=>'images/frens_product_1.jpg',
-                'nama_pembeli'=>'Ananda Arief',
-                'nama_produk'=>'Paket A',
-                'alamat'=>'Perum Berkoh K 77',
-                'harga'=>90000000,
-            ],
-        ];
-        $riwayats=[
-            [
-                'path_foto'=>'images/frens_product_1.jpg',
-                'nama_pembeli'=>'Ananda Arief',
-                'nama_produk'=>'Paket A',
-                'alamat'=>'Perum Berkoh K 77',
-                'harga'=>90000000,
-                'kuantitas'=>1,
-                'total'=>90000000,
-                'status'=>'Mengunggu Konfirmasi'
-            ],[
-                'path_foto'=>'images/frens_product_1.jpg',
-                'nama_pembeli'=>'Ananda Arief',
-                'nama_produk'=>'Bubuk Coklat',
-                'alamat'=>'Perum Berkoh K 77',
-                'harga'=>90000000,
-                'kuantitas'=>1,
-                'total'=>90000000,
-                'status'=>'Terkonfirmasi'
-            ],
-        ];
-        return view('pemesanan_agen',['keranjangs'=>$keranjang,'riwayats'=>$riwayats]);
-    }elseif(session('jabatan')=='franchisor'){
-        $riwayats=[
-            [
-                'path_foto'=>'images/frens_product_1.jpg',
-                'nama_pembeli'=>'Ananda Arief',
-                'nama_produk'=>'Paket A',
-                'alamat'=>'Perum Berkoh K 77',
-                'harga'=>90000000,
-                'kuantitas'=>1,
-                'total'=>90000000,
-                'status'=>'Mengunggu Konfirmasi'
-            ],[
-                'path_foto'=>'images/frens_product_1.jpg',
-                'nama_pembeli'=>'Ananda Arief',
-                'nama_produk'=>'Bubuk Coklat',
-                'alamat'=>'Perum Berkoh K 77',
-                'harga'=>9000000,
-                'kuantitas'=>1,
-                'total'=>9000000,
-                'status'=>'Terkonfirmasi'
-            ],
-        ];
-        return view('pemesanan_franchisor',['riwayats'=>$riwayats]);
-    }
-});
+Route::middleware('checkIsLogin')->get('/pemesanan','PemesananController@home')->name('pemesanan');
+Route::post('/pemesanan','PemesananController@postPemesanan')->name('post_pemesanan');
+
+
+Route::middleware('checkIsRole:agen')->get('/pemesanan_delete/{id_pemesanan}','PemesananController@deleteKeranjang')->name('delete_keranjang');
+Route::middleware('checkIsRole:franchisor')->get('/pemesanan_konfirmasi/{id_pemesanan}/{jawaban}','PemesananController@konfirmasiPemesanan')->name('konfirmasi_pemesanan');
+
 
 Route::get('/login', function () {
     return view('login');
 });
 
-Route::get('/agen', function () {
-    return view('agen');
-});
+Route::middleware('checkIsRole:franchisor')->get('/agen','FranchisorController@lihatDaftarAgen')->name('lihat_daftar_agen');
 
-Route::get('/agen/{id_agen}', function ($id_agen) {
-    return view('agen_detail');
-});
+Route::middleware('checkIsRole:franchisor')->get('/agen/{id_agen}/getData/{tahun}','FranchisorController@getDataYearly')->name('get_data_yearly');
+Route::middleware('checkIsRole:franchisor')->get('/agen/{id_agen}','FranchisorController@lihatDaftarAgenDetail')->name('lihat_daftar_agen_detail');
 
-Route::get('/laporan', function () {
-    return view('laporan');
-});
+Route::middleware('checkIsRole:franchisor')->get('/laporan', 'FranchisorController@laporan')->name('laporan');
+Route::middleware('checkIsRole:franchisor')->get('/laporan/getData', 'FranchisorController@getDataLaporan')->name('get_data_laporan');
 
 Route::get('/laporan/{id_produk}', function ($id_produk) {
     return view('laporan_detail');

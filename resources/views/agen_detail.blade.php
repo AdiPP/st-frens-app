@@ -24,6 +24,17 @@
 					<p>Perbandingan pemesanan perbulan</p>
 				</div>
 			</div>
+			<div class="row justify-content-center mb-5 pb-3">
+				<form id="formUpdateTahun" method="get">
+					<select required class="form-control" name="tahun" id="tahunSelect">
+						@for($i=0;$i<5;$i++)
+							<option value="{{date('Y')-$i}}">{{date('Y')-$i}}</option>
+						@endfor
+					</select>
+					<input type="hidden" name="id_agen" id="id_agenHid" value="{{$agen->id_agen}}">
+					<input type="submit" value="Tampilkan" class="btn btn-primary btn-outline-primary m-3">
+				</form>
+			</div>
 			<div class="row text-center">
 				<!-- Product Sejumlah 12  -->
 				<div class="mx-auto">
@@ -53,37 +64,48 @@
 								<tr class="text-center">
 									<th>Pemesanan</th>
 									<th>&nbsp;</th>
-									<th>Tanggal Pemesanan</th>
-									<th>Lokasi</th>
+									<th>Alamat Pengiriman</th>
+									<th>Tanggal</th>
 									<th>Harga</th>
 									<th>Kuantitas</th>
 									<th>Total</th>
+									<th>Status</th>
 								</tr>
 							</thead>
 							<tbody>
+								@forelse($riwayats as $riwayat)
 								<tr class="text-center">
 									
-									<td class="image-prod"><div class="img" style="background-image:url({{asset('images/product-1.jpg')}});"></div></td>
+									<td class="image-prod"><div class="img" style="background-image:url('{{asset($riwayat->paket->foto_paket)}}');"></div></td>
 									
 									<td class="product-name">
-										<h3>Ananda Arief</h3>
-										<p>Bubuk Coklat</p>
+										<h3>{{$riwayat->agen->nama}}</h3>
+										<p>{{$riwayat->paket->nama_paket}}</p>
 									</td>
 									<td>
-										<p>17 Oktober 2019</p>
+										<p>{{$riwayat->alamat_detil}}</p>
 									</td>
 									<td>
-										<p>SEMARANG</p>
+										<p>{{date('d M Y',strtotime($riwayat->tanggal))}}</p>
 									</td>
 									
-									<td class="price">Rp. 5.000</td>
+									<td class="price">{{$riwayat->paket->harga}}</td>
 									
 									<td class="quantity">
-										2
+										{{$riwayat->jumlah}}
 									</td>
 									
-									<td class="total">Rp. 10.000</td>
+									<td class="total">{{$riwayat->jumlah*$riwayat->paket->harga}}</td>
+									<td class="Aksi">
+										{{$riwayat->status}}
+									</td>
 								</tr><!-- END TR-->
+
+								@empty
+									<tr class="text-center">
+										<td colspan=7>Tidak ada Riwayat</td>
+									</tr>
+								@endforelse
 							</tbody>
 						</table>
 					</div>
@@ -91,20 +113,23 @@
 						<div class="col text-center">
 							<div class="block-27">
 								<ul>
-									<li><a href="#">&lt;</a></li>
-									<li class="active"><span>1</span></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#">4</a></li>
-									<li><a href="#">5</a></li>
-									<li><a href="#">&gt;</a></li>
+									<li><a href="{{$riwayats->previousPageUrl()}}">&lt;</a></li>
+									@for($i=1;$i<=$riwayats->lastPage();$i++)
+										@if($i == $riwayats->currentPage())
+											<a href="?page={{$i}}"><li class="active"><span>{{$i}}</span></li></a>
+										@else
+											<a href="?page={{$i}}"><li class=""><span>{{$i}}</span></li></a>
+										@endif
+									@endfor									
+									<li><a href="{{$riwayats->nextPageUrl()}}">&gt;</a></li>
 								</ul>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</section>
+		</div>
+	</section>
 
 		{{-- <section class="ftco-section" id="katalog">
 			<div class="container">	
@@ -147,23 +172,71 @@
 @section('add_javascript')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>	
 <script>
-	var ctx = document.getElementById('myChart').getContext('2d');
-	var myChart = new Chart(ctx, {
-		type: 'line',
-		data: {
-			labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July','Agustus','September'],
-			datasets: [{
-				label: 'Pemesanan',
-				data: [12, 19, 3, 5, 2, 3,5,1,0],
-				backgroundColor:
-					'#82ae4666'
-				,
-				borderColor: 
-					'#82ae46'
-				,
-				borderWidth: 1
-			}]
-		}
+	fetch("{{route('get_data_yearly',['tahun'=>date('Y'),'id_agen'=>$agen->id_agen])}}")
+		.then((res)=>{return res.json()})
+		.then((data)=>{
+		console.log(data)
+		var ctx = document.getElementById('myChart').getContext('2d');
+		var myChart = new Chart(ctx, {
+			type: 'line',
+			data: {
+				labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July','Agustus','September','Oktober','November','Desember'],
+				datasets: [{
+					label: 'Pemesanan',
+					data: data,
+					backgroundColor:
+						'#82ae4666'
+					,
+					borderColor: 
+						'#82ae46'
+					,
+					borderWidth: 1
+				}]
+			},
+			options:{
+				scales: {
+					yAxes: [{
+						display: true,
+						stacked: true,
+						ticks: {
+							min: 0, // minimum value
+						}
+					}]
+				}
+			}
+		});
+	})
+	
+	document.getElementById("formUpdateTahun").addEventListener("submit", function(event){
+		event.preventDefault()
+		var tahunPilih = ($('#tahunSelect').val())
+		var id_agen = ($('#id_agenHid').val())
+		var url = window.location.origin+'/agen/'+id_agen+'/getData/'+tahunPilih
+		fetch(url)
+		.then((res)=>{return res.json()})
+		.then((data)=>{
+		console.log(data)
+		var ctx = document.getElementById('myChart').getContext('2d');
+		var myChart = new Chart(ctx, {
+			type: 'line',
+			data: {
+				labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July','Agustus','September','Oktober','November','Desember'],
+				datasets: [{
+					label: 'Pemesanan',
+					data: data,
+					backgroundColor:
+						'#82ae4666'
+					,
+					borderColor: 
+						'#82ae46'
+					,
+					borderWidth: 1
+				}]
+			}
+		});
+	})
+
 	});
+	
 </script>
 @endsection

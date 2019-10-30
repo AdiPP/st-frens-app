@@ -170,7 +170,7 @@
 								<div>{{$produk['harga_produk']}}</div>
 								<div class="bottom-area d-flex px-3">
 									<div class="m-auto d-flex">
-										<a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+										<a onclick="pesanPaket({{$produk['id_paket']}})" class="buy-now d-flex justify-content-center align-items-center mx-1">
 											<span><i class="ion-ios-cart"></i></span>
 										</a>
 									</div>
@@ -272,7 +272,7 @@
 					@foreach($agens as $agen)
 					<div class="col-md-6 col-lg-3 ftco-animate">
 						<div class="product">
-							<a href="/riwayat_agen/{{$agen['id_agen']}}" class="img-prod"><img class="img-fluid" src="{{asset($agen['path_foto'])}}" alt="Colorlib Template">
+							<a href="riwayat_agen/{{$agen['id_agen']}}" class="img-prod"><img class="img-fluid" src="{{asset($agen['path_foto'])}}" alt="Colorlib Template">
 								<div class="overlay"></div>
 							</a>
 							<div class="text py-3 pb-4 px-3 text-center">
@@ -396,6 +396,10 @@
 			document.getElementById('foto_produk_holder').src = e.dataset['pathFotoProduk'];
 			document.getElementById('harga_produk_holder').innerHTML = e.dataset['hargaProduk'];
 			document.getElementById('deskripsi_produk_holder').innerHTML = e.dataset['deskripsiProduk'];
+		}
+
+		function pesanPaket($id_paket) {
+			
 		}
 	</script>
 @endsection

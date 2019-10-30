@@ -115,25 +115,24 @@
 @section('add_javascript')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>	
 <script>
-	var ctx = document.getElementById('myChart').getContext('2d');
-	var myChart = new Chart(ctx, {
-		type: 'doughnut',
-		data: {
-			labels: ['PASSION OF CHOCOLATE', 'KING CHOCOLATE'],
-			datasets: [{
-				label: '# of Votes',
-				data: [12, 19],
-				backgroundColor: [
-					'rgba(255, 99, 132, 0.2)',
-					'rgba(54, 162, 235, 0.2)',
-				],
-				borderColor: [
-					'rgba(255, 99, 132, 1)',
-					'rgba(54, 162, 235, 1)',
-				],
-				borderWidth: 1
-			}]
-		}
-	});
+	var url = window.location.origin+'/laporan/getData';
+	fetch(url)
+		.then((res)=>{return res.json()})
+		.then((data)=>{
+			var ctx = document.getElementById('myChart').getContext('2d');
+			var myChart = new Chart(ctx, {
+				type: 'doughnut',
+				data: {
+					labels: data['produks'],
+					datasets: [{
+						label: '# of Votes',
+						data: data['pemesanan'],
+						backgroundColor: data['bgColor'],
+						borderColor: data['brColor'],
+						borderWidth: 1
+					}]
+				}
+			});
+		})
 </script>
 @endsection

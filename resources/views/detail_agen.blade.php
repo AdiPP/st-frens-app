@@ -139,7 +139,7 @@
 								<div>{{$produk['harga_produk']}}</div>
 								<div class="bottom-area d-flex px-3">
 									<div class="m-auto d-flex">
-										<a href="{{ url('/pemesanan', []) }}" class="buy-now d-flex justify-content-center align-items-center mx-1">
+										<a onclick="pesanPaket({{$produk['id_paket']}},{{session('id_agen')}})" class="buy-now d-flex justify-content-center align-items-center mx-1">
 											<span><i class="ion-ios-cart"></i></span>
 										</a>
 									</div>
@@ -148,6 +148,15 @@
 						</div>
 					</div>
 					@endforeach
+					@csrf
+				</div>
+				<div id="containerAlert">
+					<!-- <form action="{{route('post_pesan_paket',['id_brand'=>$brand['id_produk']])}}" method="post">
+						<input type="hidden" name="id_paket" value="1">
+						<input type="hidden" name="id_agen" value="{{session('id_agen')}}">
+						<input type="hidden" name="status" value="Menunggu Konfirmasi">
+						<input type="submit" value="Masukan Nilai">
+					</form> -->
 				</div>
 			</div>
 		</section>
@@ -226,5 +235,29 @@
 			document.getElementById('harga_produk_holder').innerHTML = e.dataset['hargaProduk'];
 			document.getElementById('deskripsi_produk_holder').innerHTML = e.dataset['deskripsiProduk'];
 		}
+
+		function pesanPaket(id_paket,id_agen) {
+			let formData = new FormData();
+			formData.append('id_paket', id_paket);
+			formData.append('id_agen', id_agen);
+			formData.append('status', 'Keranjang');
+			formData.append('_token', $("[name='_token']").val());
+
+			fetch("{{route('post_pesan_paket',['id_brand'=>$brand['id_produk']])}}",
+				{
+					body: formData,
+					method: "post"
+				}).then(()=>{
+					$('#containerAlert').html($('#containerAlert').html()+`<div class="alert alert-success alert-dismissible fade show " role="alert">
+						Sukses menambah ke <a href="/pemesanan" class="alert-link">Keranjang</a>.
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>`)
+					setTimeout(() => {
+						$('.alert').alert('close')
+					}, 5000);
+				})
+		} 
 	</script>
 @endsection

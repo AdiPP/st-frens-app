@@ -27,43 +27,49 @@
 			<div class="row">
 
 				<!-- Product Sejumlah 12  -->
-
-				<div class="col-md-6 col-lg-3 ftco-animate">
-					<div class="product">
-						<a href="/agen/1" class="img-prod"><img class="img-fluid" src="{{asset('images/blank_login.png')}}" alt="Colorlib Template">
-							<!-- <span class="status">30%</span> -->
-							<div class="overlay"></div>
-						</a>
-						<div class="text py-3 pb-4 px-3 text-center">
-							<h3><a href="FrensDetail.html" class="text-primary font-weight-bold">Asad Hamdani</a></h3>
-							<div class="d-flex ">
-								<div class="rating d-flex m-auto">
-									<p class="text-center">
-										<a href="#"><span class="ion-ios-star"></span></a>
-										<a href="#"><span class="ion-ios-star"></span></a>
-										<a href="#"><span class="ion-ios-star-half"></span></a>
-										<a href="#"><span class="ion-ios-star-outline"></span></a>
-										<a href="#"><span class="ion-ios-star-outline"></span></a>
-									</p>
+				@foreach($agens as $agen)
+					<div class="col-md-6 col-lg-3 ftco-animate">
+						<div class="product">
+							<a href="{{route('lihat_daftar_agen_detail',['id_agen'=>$agen->id_agen])}}" class="img-prod"><img class="img-fluid" src="{{asset($agen->gambar_lokasi)}}" alt="Colorlib Template">
+								<!-- <span class="status">30%</span> -->
+								<div class="overlay"></div>
+							</a>
+							<div class="text py-3 pb-4 px-3 text-center">
+								<h3><a href="FrensDetail.html" class="text-primary font-weight-bold">{{$agen->nama}}</a></h3>
+								<div class="d-flex ">
+									<div class="rating d-flex m-auto">
+										<p class="text-center">
+											@for($i=0;$i<5;$i++)
+												@if($agen->bintang($agen->id_agen)-$i > 0)
+												<a href="#"><span class="ion-ios-star"></span></a>
+												@elseif($agen->bintang($agen->id_agen)-$i == -0.5)
+												<a href="#"><span class="ion-ios-star-half"></span></a>
+												@else
+												<a href="#"><span class="ion-ios-star-outline"></span></a>
+												@endif
+											@endfor
+										</p>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-
+				@endforeach
 				
 			</div>
     		<div class="row mt-5">
 				<div class="col text-center">
 					<div class="block-27">
 						<ul>
-							<li><a href="#">&lt;</a></li>
-							<li class="active"><span>1</span></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">5</a></li>
-							<li><a href="#">&gt;</a></li>
+							<li><a href="{{$agens->previousPageUrl()}}">&lt;</a></li>
+							@for($i=1;$i<=$agens->lastPage();$i++)
+								@if($i == $agens->currentPage())
+									<a href="?page={{$i}}"><li class="active"><span>{{$i}}</span></li></a>
+								@else
+									<a href="?page={{$i}}"><li class=""><span>{{$i}}</span></li></a>
+								@endif
+							@endfor									
+							<li><a href="{{$agens->nextPageUrl()}}">&gt;</a></li>
 						</ul>
 					</div>
 				</div>

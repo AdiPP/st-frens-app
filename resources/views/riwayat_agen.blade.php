@@ -104,8 +104,8 @@
 					</div>
 					<p>{{$agen['lokasi']}}</p>
 					<div class="row mt-4 justify-content-around">
-						<p><a href="" class="btn btn-primary btn-outline-primary py-3 px-5">Tolak Agen</a></p>
-						<p><a href="" class="btn btn-primary py-3 px-5">Terima Agen</a></p>
+						<p><a href="{{route('konfirmasi_agen',['id_brand'=>$id_brand,'id_agen'=>$id_agen])}}/tolak" class="btn btn-primary btn-outline-primary py-3 px-5">Tolak Agen</a></p>
+						<p><a href="{{route('konfirmasi_agen',['id_brand'=>$id_brand,'id_agen'=>$id_agen])}}/terima" class="btn btn-primary py-3 px-5">Terima Agen</a></p>
 					</div>
 				</div>
 			</div>
@@ -218,7 +218,6 @@
 								<div class="text text-center">
 									<p class="mb-5 pl-4 line">{{$testimoni['deskripsi']}}</p>
 									<p class="name">{{$testimoni['nama']}}</p>
-									<span class="position">{{$testimoni['brand']}}</span>
 								</div>
 							</div>
             </div>	
