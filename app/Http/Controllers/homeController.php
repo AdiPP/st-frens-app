@@ -8,6 +8,9 @@ use App\Franchise;
 class homeController extends Controller
 {
     public function index(){
+
+        $franchise = Franchise::get();
+
         $katalog = [
             [
                 'id_brand'=>1,
@@ -86,7 +89,7 @@ class homeController extends Controller
             ]
         ];
     
-        return view('home',['katalogs'=>$katalog,'brands'=>$brand]);
+        return view('home',['katalogs'=>$katalog,'brand'=>$brand, 'franchise' => $franchise]);
     }
 
     public function detailProduk($id_produk){

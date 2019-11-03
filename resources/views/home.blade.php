@@ -43,38 +43,51 @@
 					<h4 class="modal-title">Tambah Brand</h4>
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
-				<form action="#" method="post">
+				<form action="{{ url('/produk', []) }}" method="post" enctype="multipart/form-data">
+					{{ csrf_field() }}
 					<div class="modal-body">
 						<div class="column align-items-end">
 							<div class="col-md-12">
 								<div class="form-group">
 									<label for="firstname">Nama Brand</label>
-									<input type="text" required class="form-control" placeholder="Nama Brand">
+									<input type="text" class="form-control" placeholder="" name="namaBrand">
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="form-group">
+									<label for="firstname">Alamat</label>
+									<input type="text" class="form-control" placeholder="" name="alamat">
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="form-group">
+									<label for="firstname">Handphone</label>
+									<input type="text" class="form-control" placeholder="" name="handphone">
 								</div>
 							</div>
 							<div class="col-md-12">
 								<div class="form-group">
 									<label for="firstname">Foto Brand</label>
-									<input type="file" required class="form-control" placeholder="">
+									<input type="file" class="form-control" placeholder="" name="fotoBrand">
 									<p>Ukuran Foto 500x500</p>
 								</div>
 							</div>
-							<div class="col-md-12">
+							{{-- <div class="col-md-12">
 								<div class="form-group">
 									<label for="lastname">Harga Franchise</label>
-									<input type="number" required  class="form-control" placeholder="Harga">
+									<input type="number" required  class="form-control" placeholder="Harga" name="hargaBrand">
 								</div>
-							</div>
+							</div> --}}
 							<div class="col-md-12">
 								<div class="form-group">
 									<label for="lastname">Deskripsi Brand</label>
-									<textarea required  class="form-control" placeholder="Deskripsi"></textarea>
+									<textarea class="form-control" placeholder="" name="deskBrand"></textarea>
 								</div>
 							</div>
 							<div class="col-md-12">
 								<div class="form-group">
 									<label for="firstname">Scan Hak Paten</label>
-									<input type="file" required class="form-control" placeholder="">
+									<input type="file" class="form-control" placeholder="" name="hakPaten">
 									<p>Ukuran Foto 500x500</p>
 								</div>
 							</div>
@@ -89,7 +102,6 @@
 			</div>
 		</div>
 	</div>
-
 	@if(session('jabatan')=='franchisor'||session('jabatan')=='agen')
     <section class="ftco-section" id="katalog">
 		<div class="container">	
@@ -108,73 +120,73 @@
 			<div class="row">
 
 				<!-- Product Sejumlah 12  -->
-				@foreach($brands as $brand)
+				@foreach($franchise as $fran)
 				<div class="col-md-6 col-lg-3 ftco-animate">
 					<div class="product">
-						<a href="detail/{{$brand['id_brand']}}" class="img-prod"><img class="img-fluid" src="{{asset($brand['path_foto'])}}" alt="Colorlib Template">
+						<a href="detail/{{$fran['id_frans']}}" class="img-prod"><img class="img-fluid" src="{{asset($brand[0]['path_foto'])}}" alt="Colorlib Template">
 							<!-- <span class="status">30%</span> -->
 							<div class="overlay"></div>
 						</a>
 						<div class="text py-3 pb-4 px-3 text-center">
-							<h3><a href="FrensDetail.html" class="text-primary font-weight-bold">{{$brand['nama_produk']}}</a></h3>
+							<h3><a href="FrensDetail.html" class="text-primary font-weight-bold">{{$fran['nama_brand']}}</a></h3>
 							<div class="d-flex ">
 								<div class="rating d-flex m-auto">
 									<p class="text-center">
-										@if($brand['bintang'] == 0)
+										@if($brand[0]['bintang'] == 0)
 											<a href="#"><span class="ion-ios-star-outline"></span></a>
 											<a href="#"><span class="ion-ios-star-outline"></span></a>
 											<a href="#"><span class="ion-ios-star-outline"></span></a>
 											<a href="#"><span class="ion-ios-star-outline"></span></a>
 											<a href="#"><span class="ion-ios-star-outline"></span></a>
-										@elseif($brand['bintang'] == 0.5)
+										@elseif($brand[0]['bintang'] == 0.5)
 											<a href="#"><span class="ion-ios-star-half"></span></a>
 											<a href="#"><span class="ion-ios-star-outline"></span></a>
 											<a href="#"><span class="ion-ios-star-outline"></span></a>
 											<a href="#"><span class="ion-ios-star-outline"></span></a>
 											<a href="#"><span class="ion-ios-star-outline"></span></a>
-										@elseif($brand['bintang'] == 1)
+										@elseif($brand[0]['bintang'] == 1)
 											<a href="#"><span class="ion-ios-star"></span></a>
 											<a href="#"><span class="ion-ios-star-outline"></span></a>
 											<a href="#"><span class="ion-ios-star-outline"></span></a>
 											<a href="#"><span class="ion-ios-star-outline"></span></a>
 											<a href="#"><span class="ion-ios-star-outline"></span></a>
-										@elseif($brand['bintang'] == 1.5)
-											<a href="#"><span class="ion-ios-star"></span></a>
-											<a href="#"><span class="ion-ios-star-half"></span></a>
-											<a href="#"><span class="ion-ios-star-outline"></span></a>
-											<a href="#"><span class="ion-ios-star-outline"></span></a>
-											<a href="#"><span class="ion-ios-star-outline"></span></a>
-										@elseif($brand['bintang'] == 2)
-											<a href="#"><span class="ion-ios-star"></span></a>
-											<a href="#"><span class="ion-ios-star"></span></a>
-											<a href="#"><span class="ion-ios-star-outline"></span></a>
-											<a href="#"><span class="ion-ios-star-outline"></span></a>
-											<a href="#"><span class="ion-ios-star-outline"></span></a>
-										@elseif($brand['bintang'] == 2.5)
-											<a href="#"><span class="ion-ios-star"></span></a>
+										@elseif($brand[0]['bintang'] == 1.5)
 											<a href="#"><span class="ion-ios-star"></span></a>
 											<a href="#"><span class="ion-ios-star-half"></span></a>
 											<a href="#"><span class="ion-ios-star-outline"></span></a>
 											<a href="#"><span class="ion-ios-star-outline"></span></a>
-										@elseif($brand['bintang'] == 3)
+											<a href="#"><span class="ion-ios-star-outline"></span></a>
+										@elseif($brand[0]['bintang'] == 2)
+											<a href="#"><span class="ion-ios-star"></span></a>
+											<a href="#"><span class="ion-ios-star"></span></a>
+											<a href="#"><span class="ion-ios-star-outline"></span></a>
+											<a href="#"><span class="ion-ios-star-outline"></span></a>
+											<a href="#"><span class="ion-ios-star-outline"></span></a>
+										@elseif($brand[0]['bintang'] == 2.5)
+											<a href="#"><span class="ion-ios-star"></span></a>
+											<a href="#"><span class="ion-ios-star"></span></a>
+											<a href="#"><span class="ion-ios-star-half"></span></a>
+											<a href="#"><span class="ion-ios-star-outline"></span></a>
+											<a href="#"><span class="ion-ios-star-outline"></span></a>
+										@elseif($brand[0]['bintang'] == 3)
 											<a href="#"><span class="ion-ios-star"></span></a>
 											<a href="#"><span class="ion-ios-star"></span></a>
 											<a href="#"><span class="ion-ios-star"></span></a>
 											<a href="#"><span class="ion-ios-star-outline"></span></a>
 											<a href="#"><span class="ion-ios-star-outline"></span></a>
-										@elseif($brand['bintang'] == 3.5)
+										@elseif($brand[0]['bintang'] == 3.5)
 											<a href="#"><span class="ion-ios-star"></span></a>
 											<a href="#"><span class="ion-ios-star"></span></a>
 											<a href="#"><span class="ion-ios-star"></span></a>
 											<a href="#"><span class="ion-ios-star-half"></span></a>
 											<a href="#"><span class="ion-ios-star-outline"></span></a>
-										@elseif($brand['bintang'] == 4)
+										@elseif($brand[0]['bintang'] == 4)
 											<a href="#"><span class="ion-ios-star"></span></a>
 											<a href="#"><span class="ion-ios-star"></span></a>
 											<a href="#"><span class="ion-ios-star"></span></a>
 											<a href="#"><span class="ion-ios-star"></span></a>
 											<a href="#"><span class="ion-ios-star-outline"></span></a>
-										@elseif($brand['bintang'] == 4.5)
+										@elseif($brand[0]['bintang'] == 4.5)
 											<a href="#"><span class="ion-ios-star"></span></a>
 											<a href="#"><span class="ion-ios-star"></span></a>
 											<a href="#"><span class="ion-ios-star"></span></a>

@@ -7,7 +7,7 @@
 		<div class="container">
 			<div class="row no-gutters slider-text align-items-center justify-content-center">
 				<div class="col-md-9 ftco-animate text-center">
-					<h1 class="mb-0 bread">{{$brand['nama_brand']}}</h1>
+					<h1 class="mb-0 bread">{{$franchise['nama_franchisor']}}</h1>
 				</div>
 			</div>
 		</div>
@@ -104,7 +104,7 @@
 						</p>
 					</div>
 					<form action="" method="post">
-					<p>Lokasi : </p>
+					{{-- <p>Lokasi : </p>
 
 					<div class="form-group">
 						<div class="select-wrap">
@@ -119,23 +119,30 @@
 								@endif
 							</select>
 						</div>
-					</div>
-					<p>Harga : </p>
+					</div> --}}
+					{{-- <p>Harga : </p>
 					<p class="price">
 						<div class="input-group">
 							<span class="input-group-addon">Rp</span>
 							<input id="msg" type="number" class="form-control mx-4" name="harga" value="{{$brand['harga']}}">
 							<span class="input-group-addon">,00</span>
 						</div>
-					</p>
+					</p> --}}
 					<p>Kontak : </p>
 					<p class="price">
 						<div class="input-group">
-							<input id="msg" type="text" class="form-control mx-4" name="harga" placeholder="Harga" value="{{$brand['kontak']}}">
+							{{-- <input id="msg" type="text" class="form-control mx-4" name="harga" placeholder="Harga" value="{{$brand['kontak']}}"> --}}
+							<input id="msg" type="number" class="form-control" name="harga" placeholder="Kontak" value="{{$brand['kontak']}}">
 						</div>
 					</p>
 					<p>Deskripsi : </p>
-					<textarea name="" id="" class="w-100" rows="7">{{$brand['deskripsi']}}</textarea>
+					<p class="price">
+						<div class="form-group">
+							{{-- <input id="msg" type="text" class="form-control mx-4" name="harga" placeholder="Deskripsi" value="Test Deskripsi"> --}}
+							<textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message">{{$brand['deskripsi']}}</textarea>
+						</div>
+					</p>
+					{{-- <textarea name="" id="" class="w-100" rows="7">{{$brand['deskripsi']}}</textarea> --}}
 					<div class="d-flex justify-content-center">
 						<input type="submit" class="btn btn-primary w-50 text-center" value="UBAH">
 					</div>

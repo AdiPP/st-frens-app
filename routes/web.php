@@ -21,6 +21,8 @@ Route::get('/', 'homeController@index')->name('home');
 
 Route::get('/detail/{id_produk}', 'homeController@detailProduk');
 
+Route::post('/produk', 'ProdukController@store');
+
 Route::get('detail/{id_brand}/riwayat_agen/{id_agen}', function ($id_brand,$id_agen) {
     $brand=[
         'nama_brand'=>'Passion Of Chocolate'
