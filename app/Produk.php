@@ -20,4 +20,9 @@ class Produk extends Model
         'hak_paten'
     ];
     public $timestamps = false;
+
+    public function pakets()
+    {
+        return $this->hasMany('App\PaketProduk', 'id_produk');
+    }
 }

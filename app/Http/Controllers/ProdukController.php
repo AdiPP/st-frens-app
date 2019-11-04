@@ -42,11 +42,23 @@ class ProdukController extends Controller
         //     'email'=>'required'
         // ]);
 
-        $fotoBrand = $request->file('fotoBrand');
+        if ($brandPict = $request->file('fotoBrand')) {
 
-        $name = $fotoBrand->getClientOriginalName();
+            // $brandFileName = $this->randName();
+            $pathBrand = $brandPict->store('brandPict', 'public');
 
-        $fotoBrand->move('test', $name);
+            // $brandPict->move('brandPict', $brandFileName);
+
+        }
+
+         if ($patenPict = $request->file('hakPaten')) {
+
+            // $patenFileName = $this->randName();
+            $pathPaten = $patenPict->store('patenPict', 'public');
+
+            // $patenPict->move('patenPict', $patenFileName);
+
+         }
 
         $produk = new Produk([
             'id_frans' => 1,
@@ -54,10 +66,10 @@ class ProdukController extends Controller
             'alamat' => $request->get('alamat'),
             'no_hp' => $request->get('handphone'),
             'id_jenis' => 1,
-            'harga' => '5000',
+            'harga' => '0',
             'deskripsi' => $request->get('deskBrand'),
-            'foto_produk' => $name,
-            'hak_paten' => '',
+            'foto_produk' => $pathBrand,
+            'hak_paten' => $pathPaten,
         ]);
         $produk->save();
 
@@ -93,9 +105,18 @@ class ProdukController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+
+        $idProduk = $request->idProduk;
+
+        $produk = Produk::find($request->idProduk);
+        $produk->no_hp = $request->handphone;
+        $produk->deskripsi = $request->deskProduk;
+        $produk->save();
+
+        return redirect('detail/'.$idProduk);
+
     }
 
     /**
@@ -107,5 +128,9 @@ class ProdukController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    function randName(){
+        return date("Ymd").'_'.rand(10000,99999);
     }
 }

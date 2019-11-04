@@ -31,7 +31,7 @@
 								<a href="#"><span class="ion-ios-star-outline"></span></a>
 								<a href="#"><span class="ion-ios-star-outline"></span></a>
 							@elseif($brand['bintang'] == 0.5)
-								<a href="#" class="mr-2">0.5</a>									
+								<a href="#" class="mr-2">0.5</a>
 								<a href="#"><span class="ion-ios-star-half"></span></a>
 								<a href="#"><span class="ion-ios-star-outline"></span></a>
 								<a href="#"><span class="ion-ios-star-outline"></span></a>
@@ -122,7 +122,7 @@
 						<h2 class="mb-4">Paket</h2>
 						<p>Paket yang tersedia dari brand ini</p>
 					</div>
-				</div>   		
+				</div>
 			</div>
 			<div class="container">
 				<div class="row">
@@ -199,7 +199,7 @@
 												<a href="#"><span class="ion-ios-star-outline"></span></a>
 												<a href="#"><span class="ion-ios-star-outline"></span></a>
 											@elseif($testimoni['bintang'] == 0.5)
-												<a href="#" class="mr-2">0.5</a>									
+												<a href="#" class="mr-2">0.5</a>
 												<a href="#"><span class="ion-ios-star-half"></span></a>
 												<a href="#"><span class="ion-ios-star-outline"></span></a>
 												<a href="#"><span class="ion-ios-star-outline"></span></a>
@@ -278,9 +278,9 @@
 									<span class="position">{{$testimoni['lokasi']}}</span>
 								</div>
 							</div>
-						</div>	
-						@endforeach			
-					</div>								
+						</div>
+						@endforeach
+					</div>
 				</div>
 			</div>
 		</div>
@@ -295,7 +295,7 @@
 					<h2 class="mb-4">Franchise Serupa</h2>
 					<p>Atau Anda Tertarik Untuk Melihat Produk - Produk Serupa</p>
 				</div>
-			</div>   		
+			</div>
 		</div>
 		<div class="container">
 			<div class="row">
@@ -309,7 +309,7 @@
 							<h3><a href="#">{{$brand['nama_brand']}}</a></h3>
 							<div class="d-flex ">
 								<div class="rating d-flex m-auto">
-									<p class="text-center">							
+									<p class="text-center">
 									@if($brand['bintang'] == 0)
 										<a href="#" class="mr-2">0</a>
 										<a href="#"><span class="ion-ios-star-outline"></span></a>
@@ -318,7 +318,7 @@
 										<a href="#"><span class="ion-ios-star-outline"></span></a>
 										<a href="#"><span class="ion-ios-star-outline"></span></a>
 									@elseif($brand['bintang'] == 0.5)
-										<a href="#" class="mr-2">0.5</a>									
+										<a href="#" class="mr-2">0.5</a>
 										<a href="#"><span class="ion-ios-star-half"></span></a>
 										<a href="#"><span class="ion-ios-star-outline"></span></a>
 										<a href="#"><span class="ion-ios-star-outline"></span></a>
@@ -394,11 +394,11 @@
 						</div>
 					</div>
 				</div>
-				@endforeach			
+				@endforeach
 			</div>
 		</div>
     </section> --}}
-@endsection	
+@endsection
 
 @section('add_javascript')
 	<script>

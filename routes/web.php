@@ -11,7 +11,7 @@
 |
 */
 
-// Route::get('/', 'homeController@index'); 
+// Route::get('/', 'homeController@index');
 
 // Route::resource('produk', 'ProdukController');
 
@@ -21,7 +21,11 @@ Route::get('/', 'homeController@index')->name('home');
 
 Route::get('/detail/{id_produk}', 'homeController@detailProduk');
 
-Route::post('/produk', 'ProdukController@store');
+Route::post('/produk/store', 'ProdukController@store');
+
+Route::post('/produk/update', 'ProdukController@update');
+
+Route::post('/paket/store', 'PaketController@store');
 
 Route::get('detail/{id_brand}/riwayat_agen/{id_agen}', function ($id_brand,$id_agen) {
     $brand=[
@@ -33,7 +37,7 @@ Route::get('detail/{id_brand}/riwayat_agen/{id_agen}', function ($id_brand,$id_a
         'bintang'=>5,
         'nama'=>'Tejo Anusapati',
         'lokasi'=>'SEMARANG'
-    ];   
+    ];
 
     $testimonis = [
         [
@@ -49,7 +53,7 @@ Route::get('detail/{id_brand}/riwayat_agen/{id_agen}', function ($id_brand,$id_a
             'nama'=>'Bambang Rino',
             'brand'=>'Fiesta Nugget'
         ]
-    ]; 
+    ];
     return view('riwayat_agen',['brand'=>$brand,'agen'=>$agen,'testimonis'=>$testimonis]);
 });
 

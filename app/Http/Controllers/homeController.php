@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Franchise;
+use App\Produk as Produks;
 
 class homeController extends Controller
 {
     public function index(){
 
-        $franchise = Franchise::get();
+        $produks = Produks::get();
+
+        $katProduk = Produks::get();
 
         $katalog = [
             [
@@ -74,7 +77,7 @@ class homeController extends Controller
                 'bintang'=>5
             ]
         ];
-    
+
         $brand = [
             [
                 'id_brand'=>1,
@@ -88,11 +91,16 @@ class homeController extends Controller
                 'bintang'=>5
             ]
         ];
-    
-        return view('home',['katalogs'=>$katalog,'brand'=>$brand, 'franchise' => $franchise]);
+
+        return view('home',['katalogs'=>$katalog,'brand'=>$brand, 'produks' => $produks, 'katProduks' => $katProduk]);
     }
 
     public function detailProduk($id_produk){
+
+        $produk = Produks::where('id_produk', $id_produk)->first();
+
+        $pakets = Produks::find($id_produk)->pakets;
+
         if(session('jabatan') == 'franchisor'){
             $brand=[
                 'nama_brand'=>'Passion Of Chocolate',
@@ -126,7 +134,7 @@ class homeController extends Controller
                     ]
                 ]
             ];
-    
+
             $agens = [
                 [
                     'id_agen'=>1,
@@ -158,7 +166,7 @@ class homeController extends Controller
                     'lokasi'=>'SEMARANG'
                 ]
             ];
-            return view('detail_franchisor',['brand'=>$brand,'agens'=>$agens]);
+            return view('detail_franchisor',['brand'=>$brand,'agens'=>$agens, 'produk' => $produk, 'pakets' => $pakets]);
         }elseif(session('jabatan') == 'agen'){
             if ($id_produk == 1) {
                 $brand=[
@@ -263,7 +271,7 @@ class homeController extends Controller
                     ]
                 ]
             ];
-    
+
             $testimonis = [
                 [
                     'path_foto'=>'images/person_1.jpg',
@@ -291,7 +299,7 @@ class homeController extends Controller
                     'lokasi'=>'SEMARANG'
                 ]
             ];
-    
+
             $brandSerupa=[
                 [
                     'nama_brand'=>'Passion Of Chocolate',
@@ -304,8 +312,8 @@ class homeController extends Controller
                     'bintang'=>5,
                 ]
             ];
-    
-            return view('detail',['brand'=>$brand,'testimonis'=>$testimonis,'brandSerupa'=>$brandSerupa]);  
+
+            return view('detail',['brand'=>$brand,'testimonis'=>$testimonis,'brandSerupa'=>$brandSerupa]);
         }
     }
 }
