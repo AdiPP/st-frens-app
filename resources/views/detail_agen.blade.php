@@ -42,10 +42,10 @@
 					<p>{{$produk['deskripsi']}}</p>
 					<div class="row mt-2"><p>
 						@php
-							$partner = $partnership->where('id_agen', Session::get('user')->id_agen)->first();
+							$partner = $partnership->where('id_agen', Session::get('user')->id_agen)->where('id_produk', $produk['id_produk'])->first();
 						@endphp
 						@if($partner != null)
-							@if ($partnership->where('id_agen', Session::get('user')->id_agen)->where('id_produk', $produk['id_produk'])->first()->status == "Menunggu Konfirmasi")
+							@if ($partner->status == "Menunggu Konfirmasi")
 								<a href="" class="btn btn-primary py-3 px-5">Menuggu Konfirmasi</a>
 							@endif
 						@else

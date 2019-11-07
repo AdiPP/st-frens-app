@@ -120,9 +120,7 @@
 			<div class="row justify-content-end mb-3 mx-3">
 				<button class="btn btn-primary " data-target="#tambahBrand" data-toggle="modal">+ Tambah Brand</button>
 			</div>
-			@endif
 			<div class="row">
-
 				<!-- Product Sejumlah 12  -->
 				@foreach($produks as $produk)
 				@php
@@ -141,73 +139,11 @@
 							<div class="d-flex ">
 								<div class="rating d-flex m-auto">
 									<p class="text-center">
-										@if($brand[0]['bintang'] == 0)
-											<a href="#"><span class="ion-ios-star-outline"></span></a>
-											<a href="#"><span class="ion-ios-star-outline"></span></a>
-											<a href="#"><span class="ion-ios-star-outline"></span></a>
-											<a href="#"><span class="ion-ios-star-outline"></span></a>
-											<a href="#"><span class="ion-ios-star-outline"></span></a>
-										@elseif($brand[0]['bintang'] == 0.5)
-											<a href="#"><span class="ion-ios-star-half"></span></a>
-											<a href="#"><span class="ion-ios-star-outline"></span></a>
-											<a href="#"><span class="ion-ios-star-outline"></span></a>
-											<a href="#"><span class="ion-ios-star-outline"></span></a>
-											<a href="#"><span class="ion-ios-star-outline"></span></a>
-										@elseif($brand[0]['bintang'] == 1)
-											<a href="#"><span class="ion-ios-star"></span></a>
-											<a href="#"><span class="ion-ios-star-outline"></span></a>
-											<a href="#"><span class="ion-ios-star-outline"></span></a>
-											<a href="#"><span class="ion-ios-star-outline"></span></a>
-											<a href="#"><span class="ion-ios-star-outline"></span></a>
-										@elseif($brand[0]['bintang'] == 1.5)
-											<a href="#"><span class="ion-ios-star"></span></a>
-											<a href="#"><span class="ion-ios-star-half"></span></a>
-											<a href="#"><span class="ion-ios-star-outline"></span></a>
-											<a href="#"><span class="ion-ios-star-outline"></span></a>
-											<a href="#"><span class="ion-ios-star-outline"></span></a>
-										@elseif($brand[0]['bintang'] == 2)
-											<a href="#"><span class="ion-ios-star"></span></a>
-											<a href="#"><span class="ion-ios-star"></span></a>
-											<a href="#"><span class="ion-ios-star-outline"></span></a>
-											<a href="#"><span class="ion-ios-star-outline"></span></a>
-											<a href="#"><span class="ion-ios-star-outline"></span></a>
-										@elseif($brand[0]['bintang'] == 2.5)
-											<a href="#"><span class="ion-ios-star"></span></a>
-											<a href="#"><span class="ion-ios-star"></span></a>
-											<a href="#"><span class="ion-ios-star-half"></span></a>
-											<a href="#"><span class="ion-ios-star-outline"></span></a>
-											<a href="#"><span class="ion-ios-star-outline"></span></a>
-										@elseif($brand[0]['bintang'] == 3)
-											<a href="#"><span class="ion-ios-star"></span></a>
-											<a href="#"><span class="ion-ios-star"></span></a>
-											<a href="#"><span class="ion-ios-star"></span></a>
-											<a href="#"><span class="ion-ios-star-outline"></span></a>
-											<a href="#"><span class="ion-ios-star-outline"></span></a>
-										@elseif($brand[0]['bintang'] == 3.5)
-											<a href="#"><span class="ion-ios-star"></span></a>
-											<a href="#"><span class="ion-ios-star"></span></a>
-											<a href="#"><span class="ion-ios-star"></span></a>
-											<a href="#"><span class="ion-ios-star-half"></span></a>
-											<a href="#"><span class="ion-ios-star-outline"></span></a>
-										@elseif($brand[0]['bintang'] == 4)
-											<a href="#"><span class="ion-ios-star"></span></a>
-											<a href="#"><span class="ion-ios-star"></span></a>
-											<a href="#"><span class="ion-ios-star"></span></a>
-											<a href="#"><span class="ion-ios-star"></span></a>
-											<a href="#"><span class="ion-ios-star-outline"></span></a>
-										@elseif($brand[0]['bintang'] == 4.5)
-											<a href="#"><span class="ion-ios-star"></span></a>
-											<a href="#"><span class="ion-ios-star"></span></a>
-											<a href="#"><span class="ion-ios-star"></span></a>
-											<a href="#"><span class="ion-ios-star"></span></a>
-											<a href="#"><span class="ion-ios-star-half"></span></a>
-										@else
-											<a href="#"><span class="ion-ios-star"></span></a>
-											<a href="#"><span class="ion-ios-star"></span></a>
-											<a href="#"><span class="ion-ios-star"></span></a>
-											<a href="#"><span class="ion-ios-star"></span></a>
-											<a href="#"><span class="ion-ios-star"></span></a>
-										@endif
+										<a href="#"><span class="ion-ios-star"></span></a>
+										<a href="#"><span class="ion-ios-star"></span></a>
+										<a href="#"><span class="ion-ios-star"></span></a>
+										<a href="#"><span class="ion-ios-star"></span></a>
+										<a href="#"><span class="ion-ios-star"></span></a>
 									</p>
 								</div>
 							</div>
@@ -217,6 +153,41 @@
 				@endforeach
 
 			</div>
+			@else
+			<div class="row">
+				<!-- Product Sejumlah 12  -->
+				@foreach($produks->produk as $produk)
+				@php
+					if (file_exists(public_path('storage/'.$produk['foto_produk']))) {
+						$produkPath = asset('storage/'.$produk['foto_produk']);
+					} else $produkPath = asset('storage/default/noImage.jpeg');
+				@endphp
+				<div class="col-md-6 col-lg-3 ftco-animate">
+					<div class="product">
+						<a href="detail/{{$produk['id_produk']}}" class="img-prod"><img class="img-fluid" src="{{$produkPath}}">
+							<!-- <span class="status">30%</span> -->
+							<div class="overlay"></div>
+						</a>
+						<div class="text py-3 pb-4 px-3 text-center">
+							<h3><a href="FrensDetail.html" class="text-primary font-weight-bold">{{$produk['nama_produk']}}</a></h3>
+							<div class="d-flex ">
+								<div class="rating d-flex m-auto">
+									<p class="text-center">
+										<a href="#"><span class="ion-ios-star"></span></a>
+										<a href="#"><span class="ion-ios-star"></span></a>
+										<a href="#"><span class="ion-ios-star"></span></a>
+										<a href="#"><span class="ion-ios-star"></span></a>
+										<a href="#"><span class="ion-ios-star"></span></a>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				@endforeach
+
+			</div>
+			@endif
     		{{-- <div class="row mt-2">
 				<div class="col text-center">
 					<div class="block-27">

@@ -13,6 +13,6 @@ class Agen extends Model
 
     public function produk()
     {
-    	return $this->belongsToMany('App\Produk', 'partnership', 'id_agen', 'id_produk');
+    	return $this->belongsToMany('App\Produk', 'partnership', 'id_agen', 'id_produk')->wherePivot('status', 'Diterima');
     }
 }

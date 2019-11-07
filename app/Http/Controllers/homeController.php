@@ -13,12 +13,12 @@ class homeController extends Controller
     public function index(){
 
         if (session()->exists('user')) {
-            // if(session('jabatan') == 'agen') {
-            //     $agen = Agen::where('id_agen', 1)->first()->produk;
-            //     dd($agen); 
-            // }
-            // else 
+            if(session('jabatan') == 'agen') {
+                $produks = Agen::where('id_agen', session('user')->id_agen)->first();
+            }
+            else {
                 $produks = Produks::where('id_frans', session('user')->id_frans)->get();
+            }
         } else {
             $produks = Produks::get();
         }
@@ -103,7 +103,7 @@ class homeController extends Controller
             ]
         ];
 
-        return view('home',['katalogs'=>$katalog,'brand'=>$brand, 'produks' => $produks, 'katProduks' => $katProduk, 'agen' => $agen]);
+        return view('home',['katalogs'=>$katalog,'brand'=>$brand, 'produks' => $produks, 'katProduks' => $katProduk]);
     }
 
     public function detailProduk($id_produk){
