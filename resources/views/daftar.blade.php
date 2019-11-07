@@ -9,20 +9,20 @@
 
 			<div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
 					<span class="login100-form-title p-b-59">
-						Sign Up
+						Daftar
 					</span>
 
 					<div class="container-login100-form-btn ">
 						<div class="wrap-login100-form-btn m-l-r-auto m-b-50 ">
 							<div class="login100-form-bgbtn"></div>
 							<a href="/daftar_franchisor" class="login100-form-btn">
-								As Francisor
+								sebagai Francisor
 							</a>
 						</div>
 						<div class="wrap-login100-form-btn m-l-r-auto m-b-50">
 							<div class="login100-form-bgbtn"></div>
 							<a href="/daftar_agen" class="login100-form-btn">
-								As Agen
+								sebagai Agen
 							</a>
 						</div>
 					</div>

@@ -7,7 +7,7 @@
 		<div class="container">
 			<div class="row no-gutters slider-text align-items-center justify-content-center">
 				<div class="col-md-9 ftco-animate text-center">
-					<h1 class="mb-0 bread">{{$brand['nama_brand']}}</h1>
+					<h1 class="mb-0 bread">{{$produk['nama_produk']}}</h1>
 				</div>
 			</div>
 		</div>
@@ -17,100 +17,41 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-6 mb-5 ftco-animate">
-					<a href="{{$brand['path_foto_brand']}}" class="image-popup"><img src="{{asset($brand['path_foto_brand'])}}" class="img-fluid" alt="Colorlib Template"></a>
+					@php
+					if (file_exists(public_path('storage/'.$produk['foto_produk']))) {
+						$produkPath = asset('storage/'.$produk['foto_produk']);
+					} else $produkPath = asset('storage/default/noImage.jpeg');
+					@endphp
+					<a href="{{$produkPath}}" class="image-popup"><img src="{{$produkPath}}" class="img-fluid" alt="Colorlib Template"></a>
 				</div>
 				<div class="col-lg-6 product-details pl-md-5 ftco-animate">
-					<h3>{{$brand['nama_brand']}}</h3>
+					<h3>{{$produk['nama_produk']}}</h3>
 					<div class="rating d-flex">
 						<p class="text-left mr-4">
-							@if($brand['bintang'] == 0)
-								<a href="#" class="mr-2">0</a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-							@elseif($brand['bintang'] == 0.5)
-								<a href="#" class="mr-2">0.5</a>									
-								<a href="#"><span class="ion-ios-star-half"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-							@elseif($brand['bintang'] == 1)
-								<a href="#" class="mr-2">1</a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-							@elseif($brand['bintang'] == 1.5)
-								<a href="#" class="mr-2">1.5</a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star-half"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-							@elseif($brand['bintang'] == 2)
-								<a href="#" class="mr-2">2</a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-							@elseif($brand['bintang'] == 2.5)
-								<a href="#" class="mr-2">2.5</a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star-half"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-							@elseif($brand['bintang'] == 3)
-								<a href="#" class="mr-2">3</a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-							@elseif($brand['bintang'] == 3.5)
-								<a href="#" class="mr-2">3.5</a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star-half"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-							@elseif($brand['bintang'] == 4)
-								<a href="#" class="mr-2">4</a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-							@elseif($brand['bintang'] == 4.5)
-								<a href="#" class="mr-2">4.5</a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star-half"></span></a>
-							@else
-								<a href="#" class="mr-2">5</a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-							@endif
+							<a href="#" class="mr-2">5</a>
+							<a href="#"><span class="ion-ios-star"></span></a>
+							<a href="#"><span class="ion-ios-star"></span></a>
+							<a href="#"><span class="ion-ios-star"></span></a>
+							<a href="#"><span class="ion-ios-star"></span></a>
+							<a href="#"><span class="ion-ios-star"></span></a>
 						</p>
 					</div>
-					<p>{{$brand['lokasi']}}</p>
-					<p class="price"><span>{{$brand['harga']}}</span></p>
-					<p>{{$brand['kontak']}}</p>
-					<p>{{$brand['deskripsi']}}</p>
+					<p>{{$produk['alamat']}}</p>
+					{{-- <p class="price"><span>{{$brand['harga']}}</span></p> --}}
+					<p>{{$produk['no_hp']}}</p>
+					<p>{{$produk['deskripsi']}}</p>
 					<div class="row mt-2"><p>
-						@if($brand['status']=='Menunggu Konfirmasi')
-							<a href="" class="btn btn-primary py-3 px-5">Menuggu Konfirmasi</a>
+						@php
+							$partner = $partnership->where('id_agen', Session::get('user')->id_agen)->where('id_produk', $produk['id_produk'])->first();
+						@endphp
+						@if($partner != null)
+							@if ($partner->status == "Menunggu Konfirmasi")
+								<a href="" class="btn btn-primary py-3 px-5">Menuggu Konfirmasi</a>
+							@endif
+						@else
+							<a href="{{ url('/partnership/daftar/'.$produk['id_produk'].'/'.Session::get('user')->id_agen) }}" class="btn btn-primary py-3 px-5">Jadi Agen</a>
 						@endif
+
 					</p></div>
 				</div>
 			</div>
@@ -128,22 +69,29 @@
 			</div>
 			<div class="container">
 				<div class="row">
-					@foreach($brand['produk'] as $produk)
+					@foreach($pakets as $paket)
+					@php
+					if (file_exists(public_path('storage/'.$paket['foto_paket']))) {
+						$paketPath = asset('storage/'.$paket['foto_paket']);
+					} else $paketPath = asset('storage/default/noImage.jpeg');
+					@endphp
 					<div class="col-md-6 col-lg-3 ftco-animate">
 						<div class="product">
-							<a href="#" data-toggle="modal" data-nama-produk="{{$produk['nama_produk']}}" data-path-foto-produk="{{asset($produk['path_foto_produk'])}}" data-harga-produk="{{$produk['harga_produk']}}" data-deskripsi-produk="{{$produk['deskripsi_produk']}}" data-target="#detilProdukModal" onclick="sendData(this)" class="img-prod"><img class="img-fluid" src="{{asset($produk['path_foto_produk'])}}" alt="Colorlib Template">
+							<a href="#" data-toggle="modal" data-nama-produk="{{$paket['nama_paket']}}" data-path-foto-produk="{{$paketPath}}" data-harga-produk="{{$paket['harga']}}" data-deskripsi-produk="{{$paket['deskripsi_paket']}}" data-target="#detilProdukModal" onclick="sendData(this)" class="img-prod"><img class="img-fluid" src="{{$paketPath}}" alt="Colorlib Template">
 								<div class="overlay"></div>
 							</a>
 							<div class="text py-3 pb-4 px-3 text-center">
-								<h3><a href="#">{{$produk['nama_produk']}}</a></h3>
-								<div>{{$produk['harga_produk']}}</div>
-								<div class="bottom-area d-flex px-3">
-									<div class="m-auto d-flex">
-										<a onclick="pesanPaket({{$produk['id_paket']}},{{session('id_agen')}})" class="buy-now d-flex justify-content-center align-items-center mx-1">
-											<span><i class="ion-ios-cart"></i></span>
-										</a>
+								<h3><a href="#">{{$paket['nama_paket']}}</a></h3>
+								<div>{{$paket['harga']}}</div>
+								@if ($partner != null && $partnership->where('id_agen', Session::get('user')->id_agen)->where('id_produk', $produk['id_produk'])->first()->status == "Diterima")
+									<div class="bottom-area d-flex px-3">
+										<div class="m-auto d-flex">
+											<a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+												<span><i class="ion-ios-cart"></i></span>
+											</a>
+										</div>
 									</div>
-								</div>
+								@endif
 							</div>
 						</div>
 					</div>
