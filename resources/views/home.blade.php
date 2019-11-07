@@ -1,6 +1,10 @@
 @extends('master_layout')
 
 @section('isi')
+	{{-- @php
+		dd(Session::get('user'));
+		die();
+	@endphp --}}
     <!-- END nav -->
 	<section id="home-section" class="hero">
 		<div class="home-slider owl-carousel">

@@ -27,6 +27,16 @@ Route::post('/produk/update', 'ProdukController@update');
 
 Route::post('/paket/store', 'PaketController@store');
 
+Route::post('/daftar/store', 'RegistrasiController@store');
+
+Route::get('/partnership/daftar/{id_produk}/{id_agen}', 'PartnershipController@daftar');
+
+Route::get('/login', function () {
+    return view('login');
+});
+
+Route::post('/login/masuk', 'RegistrasiController@masuk');
+
 Route::get('detail/{id_brand}/riwayat_agen/{id_agen}', function ($id_brand,$id_agen) {
     $brand=[
         'nama_brand'=>'Passion Of Chocolate'
@@ -124,10 +134,6 @@ Route::get('/pemesanan', function () {
         ];
         return view('pemesanan_franchisor',['riwayats'=>$riwayats]);
     }
-});
-
-Route::get('/login', function () {
-    return view('login');
 });
 
 Route::get('/agen', function () {

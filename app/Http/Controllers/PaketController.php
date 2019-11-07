@@ -38,10 +38,13 @@ class PaketController extends Controller
     public function store(Request $request)
     {
 
+        // die();
+
         if ($paketPict = $request->file('fotoPaket')) {
             
-            $paketFileName = 'pkt_'.globalFunc::randName();
+            // $paketFileName = 'pkt_'.globalFunc::randName();
             $path = $paketPict->store('paketPict', 'public');
+            // dd($path);
 
         }
 
@@ -53,7 +56,7 @@ class PaketController extends Controller
         $paket->harga = $request->get('hargaPaket');
         $paket->save();
 
-        echo 'Data Masuk';
+        return redirect()->back();
 
     }
 

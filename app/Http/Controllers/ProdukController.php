@@ -61,7 +61,7 @@ class ProdukController extends Controller
          }
 
         $produk = new Produk([
-            'id_frans' => 1,
+            'id_frans' => session('user')->id_frans,
             'nama_produk' => $request->get('namaBrand'),
             'alamat' => $request->get('alamat'),
             'no_hp' => $request->get('handphone'),

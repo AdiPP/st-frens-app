@@ -25,4 +25,9 @@ class Produk extends Model
     {
         return $this->hasMany('App\PaketProduk', 'id_produk');
     }
+
+    public function agen()
+    {
+    	return $this->belongsToMany('App\Agen', 'partnership', 'id_produk', 'id_agen');
+    }
 }

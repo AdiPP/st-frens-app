@@ -5,12 +5,22 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Franchise;
 use App\Produk as Produks;
+use App\Partnership;
+use App\Agen;
 
 class homeController extends Controller
 {
     public function index(){
 
-        $produks = Produks::get();
+        if (session()->exists('user')) {
+            if(session('jabatan') == 'agen') {
+                $agen = Agen::where('id_agen', 1)->first()->produk;
+                dd($agen); 
+            }
+            else $produks = Produks::where('id_frans', session('user')->id_frans)->get();
+        } else {
+            $produks = Produks::get();
+        }
 
         $katProduk = Produks::get();
 
@@ -92,7 +102,7 @@ class homeController extends Controller
             ]
         ];
 
-        return view('home',['katalogs'=>$katalog,'brand'=>$brand, 'produks' => $produks, 'katProduks' => $katProduk]);
+        return view('home',['katalogs'=>$katalog,'brand'=>$brand, 'produks' => $produks, 'katProduks' => $katProduk, 'agen' => $agen]);
     }
 
     public function detailProduk($id_produk){
@@ -101,7 +111,7 @@ class homeController extends Controller
 
         $pakets = Produks::find($id_produk)->pakets;
 
-        if(session('jabatan') == 'franchisor'){
+        if(session('jabatan') == 'franchisor' && $produk->id_frans == session('user')->id_frans){
             $brand=[
                 'nama_brand'=>'Passion Of Chocolate',
                 'path_foto_brand'=>'images/frens_product_1.jpg',
@@ -168,6 +178,9 @@ class homeController extends Controller
             ];
             return view('detail_franchisor',['brand'=>$brand,'agens'=>$agens, 'produk' => $produk, 'pakets' => $pakets]);
         }elseif(session('jabatan') == 'agen'){
+            
+            $partnership = new Partnership();
+
             if ($id_produk == 1) {
                 $brand=[
                     'nama_brand'=>'Passion Of Chocolate',
@@ -203,6 +216,7 @@ class homeController extends Controller
                     ]
                 ];
             } elseif ($id_produk == 2) {
+
                 $brand=[
                     'nama_brand'=>'Passion Of Chocolate',
                     'path_foto_brand'=>'images/frens_product_1.jpg',
@@ -237,7 +251,7 @@ class homeController extends Controller
                     ]
                 ];
             }
-            return view('detail_agen',['brand'=>$brand]);
+            return view('detail_agen',['brand'=>$brand, 'produk' => $produk, 'pakets' => $pakets, 'partnership' => $partnership]);
         }else{
             $brand=[
                 'nama_brand'=>'Passion Of Chocolate',
@@ -313,7 +327,7 @@ class homeController extends Controller
                 ]
             ];
 
-            return view('detail',['brand'=>$brand,'testimonis'=>$testimonis,'brandSerupa'=>$brandSerupa]);
+            return view('detail',['brand'=>$brand,'testimonis'=>$testimonis,'brandSerupa'=>$brandSerupa, 'produk' => $produk, 'pakets' => $pakets]);
         }
     }
 }

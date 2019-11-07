@@ -25,129 +25,47 @@
 				</div>
 				<div class="col-lg-6 product-details pl-md-5 ftco-animate">
 					<h3>{{$produk['nama_produk']}}</h3>
-					<!-- <div class="rating d-flex">
+					<div class="rating d-flex">
 						<p class="text-left mr-4">
-							@if($brand['bintang'] == 0)
-								<a href="#" class="mr-2">0</a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-							@elseif($brand['bintang'] == 0.5)
-								<a href="#" class="mr-2">0.5</a>
-								<a href="#"><span class="ion-ios-star-half"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-							@elseif($brand['bintang'] == 1)
-								<a href="#" class="mr-2">1</a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-							@elseif($brand['bintang'] == 1.5)
-								<a href="#" class="mr-2">1.5</a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star-half"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-							@elseif($brand['bintang'] == 2)
-								<a href="#" class="mr-2">2</a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-							@elseif($brand['bintang'] == 2.5)
-								<a href="#" class="mr-2">2.5</a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star-half"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-							@elseif($brand['bintang'] == 3)
-								<a href="#" class="mr-2">3</a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-							@elseif($brand['bintang'] == 3.5)
-								<a href="#" class="mr-2">3.5</a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star-half"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-							@elseif($brand['bintang'] == 4)
-								<a href="#" class="mr-2">4</a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-							@elseif($brand['bintang'] == 4.5)
-								<a href="#" class="mr-2">4.5</a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star-half"></span></a>
-							@else
-								<a href="#" class="mr-2">5</a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-							@endif
+							<a href="#" class="mr-2">5</a>
+							<a href="#"><span class="ion-ios-star"></span></a>
+							<a href="#"><span class="ion-ios-star"></span></a>
+							<a href="#"><span class="ion-ios-star"></span></a>
+							<a href="#"><span class="ion-ios-star"></span></a>
+							<a href="#"><span class="ion-ios-star"></span></a>
 						</p>
-					</div> -->
+					</div>
 
 					<form action="/produk/update" method="post">
 						{{ csrf_field() }}
 						<input type="hidden" name="idProduk" value="{{ $produk->id_produk }}"> <br/>
-						<!-- <p>Lokasi : </p>
+						<p>Lokasi : </p>
 						<div class="form-group">
-									<div class="select-wrap">
-										<div class="icon"><span class="ion-ios-arrow-down"></span></div>
-										<select name="" id="" class="form-control">
-											@if($produk['alamat']=='JABODETABEK')
-												<option value="" checked>JABODETABEK</option>
-												<option value="">PURWOKERTO</option>
-											@elseif($produk['alamat']=='PURWOKERTO')
-												<option value="" >JABODETABEK</option>
-												<option value="" checked>PURWOKERTO</option>
-							@else
-								<option value="">JABODETABEK</option>
-								<option value="">PURWOKERTO</option>
-											@endif
-										</select>
-									</div>
-								</div> -->
-								<p>Kontak : </p>
-								<p class="price">
-									<div class="input-group">
-										{{-- <input id="msg" type="text" class="form-control mx-4" name="harga" placeholder="Harga" value="{{$brand['kontak']}}"> --}}
-										<input id="msg" type="number" class="form-control" name="handphone" placeholder="Kontak" value="{{$produk['no_hp']}}">
-									</div>
-								</p>
-								<p>Deskripsi : </p>
-								<p class="price">
-									<div class="form-group">
-										<textarea name="deskProduk" id="" cols="30" rows="7" class="form-control" placeholder="Message">{{$produk['deskripsi']}}</textarea>
-									</div>
-								</p>
-								<div class="d-flex justify-content-center">
-						<div class="col-6">
-							<input type="submit" class="btn btn-primary w-100 text-center" value="UBAH">
+							<div class="select-wrap">
+								<div class="icon"><span class="ion-ios-arrow-down"></span></div>
+								<select name="" id="" class="form-control">
+									<option value="" checked>PURWOKERTO</option>
+								</select>
+							</div>
 						</div>
-						<div class="col-6">
-							<a href="#" class="btn btn-secondary w-100 text-center disabled">NONAKTIFKAN</a>
+						<p>Kontak : </p>
+						<p class="price">
+							<div class="input-group">
+								{{-- <input id="msg" type="text" class="form-control mx-4" name="harga" placeholder="Harga" value="{{$brand['kontak']}}"> --}}
+								<input id="msg" type="number" class="form-control" name="handphone" placeholder="Kontak" value="{{$produk['no_hp']}}">
+							</div>
+						</p>
+						<p>Deskripsi : </p>
+						<div class="form-group">
+							<textarea name="deskProduk" style="height: auto !important; text-align: left;" id="" cols="30" rows="7" class="form-control" placeholder="Message">{{$produk['deskripsi']}}</textarea>
+						</div>
+						<div class="d-flex justify-content-center">
+							<div class="col-6">
+								<input type="submit" class="btn btn-primary w-100 text-center" value="UBAH">
+							</div>
+							<div class="col-6">
+								<a href="#" class="btn btn-secondary w-100 text-center disabled">NONAKTIFKAN</a>
+							</div>
 						</div>
 					</form>
 				</div>
@@ -204,7 +122,7 @@
 
 				<!-- Modal Header -->
 					<div class="modal-header">
-						<h4 class="modal-title">Tambah Produk</h4>
+						<h4 class="modal-title">Tambah Paket</h4>
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
 					</div>
 					<form action="/paket/store" method="post" enctype="multipart/form-data">
