@@ -21,9 +21,6 @@ Route::get('/', 'homeController@index')->name('home');
 
 Route::get('/detail/{id_produk}', 'homeController@detailProduk');
 
-    return view('home',['katalogs'=>$katalog,'brands'=>$brand]);
-})->name('home');
-
 Route::get('/detail/{id_produk}', function ($id_produk) {
     if(session('jabatan') == 'franchisor'){
         $brand=[
