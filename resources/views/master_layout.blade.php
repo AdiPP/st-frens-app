@@ -72,7 +72,7 @@
 					<li class="nav-item"><a href="/pemesanan" class="nav-link">Pemesanan</a></li>
 					<li class="nav-item"><a href="/agen" class="nav-link">Agen</a></li>
 					<li class="nav-item"><a href="/laporan" class="nav-link">Laporan</a></li>
-					<li class="nav-item cta cta-colored"><a href="/login" class="nav-link"><span class="icon-person"></span></a></li>
+					<li class="nav-item cta cta-colored"><a href="/logout" class="nav-link"><span class="icon-power_settings_new"></span></a></li>
                 </ul>
             </div>
             @elseif(session('jabatan')=='agen')
@@ -81,7 +81,7 @@
 					<li class="nav-item"><a href="/" class="nav-link">Home</a></li>
 					<li class="nav-item"><a href="/#katalog" class="nav-link">Produk</a></li>
 					<li class="nav-item"><a href="/pemesanan" class="nav-link">Pemesanan</a></li>
-					<li class="nav-item cta cta-colored"><a href="/login" class="nav-link"><span class="icon-person"></span></a></li>
+					<li class="nav-item cta cta-colored"><a href="/logout" class="nav-link"><span class="icon-power_settings_new"></span></a></li>
                 </ul>
             </div>
             @else
@@ -180,7 +180,7 @@
 <script src="{{asset('js/jquery.animateNumber.min.js')}}"></script>
 <script src="{{asset('js/bootstrap-datepicker.js')}}"></script>
 <script src="{{asset('js/scrollax.min.js')}}"></script>
-<script src="{{asset('js/google-map.js')}}"></script>
+{{-- <script src="{{asset('js/google-map.js')}}"></script> --}}
 <script src="{{asset('js/main.js')}}"></script>
 
 @yield('add_javascript')
