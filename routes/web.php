@@ -21,9 +21,6 @@ Route::get('/', 'homeController@index')->name('home');
 
 Route::get('/detail/{id_produk}', 'homeController@detailProduk');
 
-<<<<<<< HEAD
-Route::post('/produk/store', 'ProdukController@store');
-=======
     return view('home',['katalogs'=>$katalog,'brands'=>$brand]);
 })->name('home');
 
@@ -215,7 +212,6 @@ Route::get('/detail/{id_produk}', function ($id_produk) {
         return view('detail',['brand'=>$brand,'testimonis'=>$testimonis,'brandSerupa'=>$brandSerupa]);
     }
 })->name('detail_produk');
->>>>>>> parent of 33a4188f... update dikit dikit
 
 Route::post('/produk/update', 'ProdukController@update');
 
