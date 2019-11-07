@@ -13,11 +13,12 @@ class homeController extends Controller
     public function index(){
 
         if (session()->exists('user')) {
-            if(session('jabatan') == 'agen') {
-                $agen = Agen::where('id_agen', 1)->first()->produk;
-                dd($agen); 
-            }
-            else $produks = Produks::where('id_frans', session('user')->id_frans)->get();
+            // if(session('jabatan') == 'agen') {
+            //     $agen = Agen::where('id_agen', 1)->first()->produk;
+            //     dd($agen); 
+            // }
+            // else 
+                $produks = Produks::where('id_frans', session('user')->id_frans)->get();
         } else {
             $produks = Produks::get();
         }
