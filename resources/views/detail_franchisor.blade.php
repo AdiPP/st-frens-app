@@ -2,9 +2,9 @@
 
 @section('isi')
 	@php
-	if (file_exists(public_path('storage/'.$produk['foto_produk']))) {
-		$produkPath = asset('storage/'.$produk['foto_produk']);
-	} else $produkPath = asset('storage/default/noImage.jpeg');
+	if (file_exists(public_path($produk['foto_produk']))) {
+		$produkPath = asset($produk['foto_produk']);
+	} else $produkPath = asset('default/noImage.jpeg');
 	@endphp
 	<!-- END nav -->
     <div class="hero-wrap hero-bread" style="background-image: url({{asset('images/frens_bg_3.jpg')}});">
@@ -89,9 +89,9 @@
 				<div class="row">
 					@foreach($pakets as $paket)
 					@php
-						if (file_exists(public_path('storage/'.$paket['foto_paket']))) {
-							$paketPath = asset('storage/'.$paket['foto_paket']);
-						} else $paketPath = asset('storage/default/noImage.jpeg');
+						if (file_exists(public_path($paket['foto_paket']))) {
+							$paketPath = asset($paket['foto_paket']);
+						} else $paketPath = asset('default/noImage.jpeg');
 					@endphp
 					<div class="col-md-6 col-lg-3 ftco-animate">
 						<div class="product">
@@ -101,13 +101,6 @@
 							<div class="text py-3 pb-4 px-3 text-center">
 								<h3><a href="#">{{$paket['nama_paket']}}</a></h3>
 								<div>{{$paket['harga']}}</div>
-								<div class="bottom-area d-flex px-3">
-									<div class="m-auto d-flex">
-										<a onclick="pesanPaket({{$produk['id_paket']}})" class="buy-now d-flex justify-content-center align-items-center mx-1">
-											<span><i class="ion-ios-cart"></i></span>
-										</a>
-									</div>
-								</div>
 							</div>
 						</div>
 					</div>
@@ -192,7 +185,7 @@
 			</div>
 		</div>
 
-		{{-- <section class="ftco-section">
+		<section class="ftco-section">
 			<div class="container">
 				<div class="row justify-content-center mb-3 pb-3">
 					<div class="col-md-12 heading-section text-center ftco-animate">
@@ -205,81 +198,88 @@
 			<div class="container">
 				<div class="row">
 					@foreach($agens as $agen)
+					@php
+						if($agen->agen->gambar_lokasi != "") {
+							$fotoPath = asset($agen->agen->gambar_lokasi);
+						}else {
+							$fotoPath = asset('default/noImage.jpeg');
+						} 
+					@endphp
 					<div class="col-md-6 col-lg-3 ftco-animate">
 						<div class="product">
-							<a href="riwayat_agen/{{$agen['id_agen']}}" class="img-prod"><img class="img-fluid" src="{{asset($agen['path_foto'])}}" alt="Colorlib Template">
+							<a href="{{route('konfirmasi_agen',['id_brand'=>$produk->id_produk,'id_agen'=>$agen->agen->id_agen])}}" class="img-prod"><img class="img-fluid" src="{{$fotoPath}}" alt="Colorlib Template">
 								<div class="overlay"></div>
 							</a>
 							<div class="text py-3 pb-4 px-3 text-center">
-								<h3><a href="#">{{$agen['nama']}}</a></h3>
-								<p>{{$agen['lokasi']}}</p>
-								<div class="d-flex ">
+								<h3><a href="#">{{$agen->agen->nama}}</a></h3>
+								<p>{{$agen->agen->alamat}}</p>
+								<!-- <div class="d-flex ">
 									<div class="rating d-flex m-auto">
 										<p class="text-center">
-										@if($agen['bintang'] == 0)
+										@if($agen->agen->bintang($agen->agen->id_agen) == 0)
 											<a href="#" class="mr-2">0</a>
 											<a href="#"><span class="ion-ios-star-outline"></span></a>
 											<a href="#"><span class="ion-ios-star-outline"></span></a>
 											<a href="#"><span class="ion-ios-star-outline"></span></a>
 											<a href="#"><span class="ion-ios-star-outline"></span></a>
 											<a href="#"><span class="ion-ios-star-outline"></span></a>
-										@elseif($agen['bintang'] == 0.5)
+										@elseif($agen->agen->bintang($agen->agen->id_agen) == 0.5)
 											<a href="#" class="mr-2">0.5</a>
 											<a href="#"><span class="ion-ios-star-half"></span></a>
 											<a href="#"><span class="ion-ios-star-outline"></span></a>
 											<a href="#"><span class="ion-ios-star-outline"></span></a>
 											<a href="#"><span class="ion-ios-star-outline"></span></a>
 											<a href="#"><span class="ion-ios-star-outline"></span></a>
-										@elseif($agen['bintang'] == 1)
+										@elseif($agen->agen->bintang($agen->agen->id_agen) == 1)
 											<a href="#" class="mr-2">1</a>
 											<a href="#"><span class="ion-ios-star"></span></a>
 											<a href="#"><span class="ion-ios-star-outline"></span></a>
 											<a href="#"><span class="ion-ios-star-outline"></span></a>
 											<a href="#"><span class="ion-ios-star-outline"></span></a>
 											<a href="#"><span class="ion-ios-star-outline"></span></a>
-										@elseif($agen['bintang'] == 1.5)
+										@elseif($agen->agen->bintang($agen->agen->id_agen) == 1.5)
 											<a href="#" class="mr-2">1.5</a>
 											<a href="#"><span class="ion-ios-star"></span></a>
 											<a href="#"><span class="ion-ios-star-half"></span></a>
 											<a href="#"><span class="ion-ios-star-outline"></span></a>
 											<a href="#"><span class="ion-ios-star-outline"></span></a>
 											<a href="#"><span class="ion-ios-star-outline"></span></a>
-										@elseif($agen['bintang'] == 2)
+										@elseif($agen->agen->bintang($agen->agen->id_agen) == 2)
 											<a href="#" class="mr-2">2</a>
 											<a href="#"><span class="ion-ios-star"></span></a>
 											<a href="#"><span class="ion-ios-star"></span></a>
 											<a href="#"><span class="ion-ios-star-outline"></span></a>
 											<a href="#"><span class="ion-ios-star-outline"></span></a>
 											<a href="#"><span class="ion-ios-star-outline"></span></a>
-										@elseif($agen['bintang'] == 2.5)
+										@elseif($agen->agen->bintang($agen->agen->id_agen) == 2.5)
 											<a href="#" class="mr-2">2.5</a>
 											<a href="#"><span class="ion-ios-star"></span></a>
 											<a href="#"><span class="ion-ios-star"></span></a>
 											<a href="#"><span class="ion-ios-star-half"></span></a>
 											<a href="#"><span class="ion-ios-star-outline"></span></a>
 											<a href="#"><span class="ion-ios-star-outline"></span></a>
-										@elseif($agen['bintang'] == 3)
+										@elseif($agen->agen->bintang($agen->agen->id_agen) == 3)
 											<a href="#" class="mr-2">3</a>
 											<a href="#"><span class="ion-ios-star"></span></a>
 											<a href="#"><span class="ion-ios-star"></span></a>
 											<a href="#"><span class="ion-ios-star"></span></a>
 											<a href="#"><span class="ion-ios-star-outline"></span></a>
 											<a href="#"><span class="ion-ios-star-outline"></span></a>
-										@elseif($agen['bintang'] == 3.5)
+										@elseif($agen->agen->bintang($agen->agen->id_agen) == 3.5)
 											<a href="#" class="mr-2">3.5</a>
 											<a href="#"><span class="ion-ios-star"></span></a>
 											<a href="#"><span class="ion-ios-star"></span></a>
 											<a href="#"><span class="ion-ios-star"></span></a>
 											<a href="#"><span class="ion-ios-star-half"></span></a>
 											<a href="#"><span class="ion-ios-star-outline"></span></a>
-										@elseif($agen['bintang'] == 4)
+										@elseif($agen->agen->bintang($agen->agen->id_agen) == 4)
 											<a href="#" class="mr-2">4</a>
 											<a href="#"><span class="ion-ios-star"></span></a>
 											<a href="#"><span class="ion-ios-star"></span></a>
 											<a href="#"><span class="ion-ios-star"></span></a>
 											<a href="#"><span class="ion-ios-star"></span></a>
 											<a href="#"><span class="ion-ios-star-outline"></span></a>
-										@elseif($agen['bintang'] == 4.5)
+										@elseif($agen->agen->bintang($agen->agen->id_agen) == 4.5)
 											<a href="#" class="mr-2">4.5</a>
 											<a href="#"><span class="ion-ios-star"></span></a>
 											<a href="#"><span class="ion-ios-star"></span></a>
@@ -296,13 +296,13 @@
 										@endif
 										</p>
 									</div>
-								</div>
+								</div> -->
 							</div>
 						</div>
 					</div>
 					@endforeach
 				</div>
-				<div class="row mt-2">
+				<!-- <div class="row mt-2">
 					<div class="col text-center">
 						<div class="block-27">
 							<ul>
@@ -316,9 +316,9 @@
 							</ul>
 						</div>
 					</div>
-				</div>
+				</div> -->
 			</div>
-		</section> --}}
+		</section>
 
 
 

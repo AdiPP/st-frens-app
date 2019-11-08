@@ -33,7 +33,7 @@
 			</div>
 		</section>
 		
-		<section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url(images/frens_bg_2.jpg);">
+		<!-- <section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url(images/frens_bg_2.jpg);">
     	<div class="container">
     		<div class="row justify-content-center py-5">
     			<div class="col-md-10">
@@ -74,5 +74,5 @@
 	        </div>
         </div>
     	</div>
-    </section>
+    </section> -->
 @endsection	

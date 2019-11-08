@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\PaketProduk;
+use App\Models\Paket;
 use App\Config\globalFunc;
 use Illuminate\Support\Facades\Storage;
 
@@ -43,12 +43,12 @@ class PaketController extends Controller
         if ($paketPict = $request->file('fotoPaket')) {
             
             // $paketFileName = 'pkt_'.globalFunc::randName();
-            $path = $paketPict->store('paketPict', 'public');
+            $path = $paketPict->store('paketPict', 'frens');
             // dd($path);
 
         }
 
-        $paket = new PaketProduk();
+        $paket = new Paket();
         $paket->id_produk = $request->get('idProduk');
         $paket->nama_paket = $request->get('namaPaket');
         $paket->foto_paket = $path;

@@ -19,7 +19,9 @@
 
 Route::get('/', 'homeController@index')->name('home');
 
-Route::get('/detail/{id_produk}', 'homeController@detailProduk');
+Route::get('/detail/{id_produk}', 'homeController@detailProduk')->name('detail_produk');
+
+Route::post('detail/{id_brand}','PemesananController@pesanPaket')->name('post_pesan_paket');
 
 Route::post('/produk/store', 'ProdukController@store');
 
@@ -39,35 +41,9 @@ Route::get('/login', function () {
 
 Route::post('/login/masuk', 'RegistrasiController@masuk');
 
-Route::get('detail/{id_brand}/riwayat_agen/{id_agen}', function ($id_brand,$id_agen) {
-    $brand=[
-        'nama_brand'=>'Passion Of Chocolate'
-    ];
-    $agen = [
-        'id_agen'=>1,
-        'path_foto'=>'images/person_1.jpg',
-        'bintang'=>5,
-        'nama'=>'Tejo Anusapati',
-        'lokasi'=>'SEMARANG'
-    ];
+Route::middleware('checkIsRole:franchisor')->get('detail/{id_brand}/riwayat_agen/{id_agen}/{jawaban}','FranchisorController@konfirmasiAgen')->name('konfirmasi_jawaban_agen');
 
-    $testimonis = [
-        [
-            'path_foto'=>'images/person_1.jpg',
-            'bintang'=>5,
-            'deskripsi'=>'Performanya bagus',
-            'nama'=>'Ahmad Yuli',
-            'brand'=>'King Choco'
-        ],[
-            'path_foto'=>'images/person_1.jpg',
-            'bintang'=>5,
-            'deskripsi'=>'Produk saya laku',
-            'nama'=>'Bambang Rino',
-            'brand'=>'Fiesta Nugget'
-        ]
-    ];
-    return view('riwayat_agen',['brand'=>$brand,'agen'=>$agen,'testimonis'=>$testimonis]);
-});
+Route::middleware('checkIsRole:franchisor')->get('detail/{id_brand}/riwayat_agen/{id_agen}','FranchisorController@lihatAgen')->name('konfirmasi_agen');
 
 Route::get('/session/{jabatan}', function ($jabatan) {
     Session::put('jabatan',$jabatan);
@@ -99,14 +75,11 @@ Route::get('/logout', function () {
 Route::middleware('checkIsLogin')->get('/pemesanan','PemesananController@home')->name('pemesanan');
 Route::post('/pemesanan','PemesananController@postPemesanan')->name('post_pemesanan');
 
-
 Route::middleware('checkIsRole:agen')->get('/pemesanan_delete/{id_pemesanan}','PemesananController@deleteKeranjang')->name('delete_keranjang');
 Route::middleware('checkIsRole:franchisor')->get('/pemesanan_konfirmasi/{id_pemesanan}/{jawaban}','PemesananController@konfirmasiPemesanan')->name('konfirmasi_pemesanan');
 
 
-Route::get('/agen', function () {
-    return view('agen');
-});
+Route::middleware('checkIsRole:franchisor')->get('/agen','FranchisorController@lihatDaftarAgen')->name('lihat_daftar_agen');
 
 Route::middleware('checkIsRole:franchisor')->get('/agen/{id_agen}/getData/{tahun}','FranchisorController@getDataYearly')->name('get_data_yearly');
 Route::middleware('checkIsRole:franchisor')->get('/agen/{id_agen}','FranchisorController@lihatDaftarAgenDetail')->name('lihat_daftar_agen_detail');

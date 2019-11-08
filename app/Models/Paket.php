@@ -10,7 +10,7 @@ class Paket extends Model
     protected $table = 'paket';
     protected $primaryKey = 'id_paket';
     public $timestamps = false;
-
+    protected $fillable = [];
     public function produk(){
         return $this->belongsTo('App\Models\Produk','id_produk');
     }

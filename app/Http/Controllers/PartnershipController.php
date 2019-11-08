@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Partnership;
+use App\Models\Partnership;
 
 class PartnershipController extends Controller
 {

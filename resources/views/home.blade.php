@@ -124,9 +124,9 @@
 				<!-- Product Sejumlah 12  -->
 				@foreach($produks as $produk)
 				@php
-					if (file_exists(public_path('storage/'.$produk['foto_produk']))) {
-						$produkPath = asset('storage/'.$produk['foto_produk']);
-					} else $produkPath = asset('storage/default/noImage.jpeg');
+					if (file_exists(public_path($produk['foto_produk']))) {
+						$produkPath = asset($produk['foto_produk']);
+					} else $produkPath = asset('default/noImage.jpeg');
 				@endphp
 				<div class="col-md-6 col-lg-3 ftco-animate">
 					<div class="product">
@@ -135,18 +135,7 @@
 							<div class="overlay"></div>
 						</a>
 						<div class="text py-3 pb-4 px-3 text-center">
-							<h3><a href="FrensDetail.html" class="text-primary font-weight-bold">{{$produk['nama_produk']}}</a></h3>
-							<div class="d-flex ">
-								<div class="rating d-flex m-auto">
-									<p class="text-center">
-										<a href="#"><span class="ion-ios-star"></span></a>
-										<a href="#"><span class="ion-ios-star"></span></a>
-										<a href="#"><span class="ion-ios-star"></span></a>
-										<a href="#"><span class="ion-ios-star"></span></a>
-										<a href="#"><span class="ion-ios-star"></span></a>
-									</p>
-								</div>
-							</div>
+							<h3><a href="detail/{{$produk['id_produk']}}" class="text-primary font-weight-bold">{{$produk['nama_produk']}}</a></h3>
 						</div>
 					</div>
 				</div>
@@ -158,9 +147,9 @@
 				<!-- Product Sejumlah 12  -->
 				@foreach($produks->produk as $produk)
 				@php
-					if (file_exists(public_path('storage/'.$produk['foto_produk']))) {
-						$produkPath = asset('storage/'.$produk['foto_produk']);
-					} else $produkPath = asset('storage/default/noImage.jpeg');
+					if (file_exists(public_path($produk['foto_produk']))) {
+						$produkPath = asset($produk['foto_produk']);
+					} else $produkPath = asset('default/noImage.jpeg');
 				@endphp
 				<div class="col-md-6 col-lg-3 ftco-animate">
 					<div class="product">
@@ -169,18 +158,7 @@
 							<div class="overlay"></div>
 						</a>
 						<div class="text py-3 pb-4 px-3 text-center">
-							<h3><a href="FrensDetail.html" class="text-primary font-weight-bold">{{$produk['nama_produk']}}</a></h3>
-							<div class="d-flex ">
-								<div class="rating d-flex m-auto">
-									<p class="text-center">
-										<a href="#"><span class="ion-ios-star"></span></a>
-										<a href="#"><span class="ion-ios-star"></span></a>
-										<a href="#"><span class="ion-ios-star"></span></a>
-										<a href="#"><span class="ion-ios-star"></span></a>
-										<a href="#"><span class="ion-ios-star"></span></a>
-									</p>
-								</div>
-							</div>
+							<h3><a href="detail/{{$produk['id_produk']}}" class="text-primary font-weight-bold">{{$produk['nama_produk']}}</a></h3>
 						</div>
 					</div>
 				</div>
@@ -221,9 +199,9 @@
 				<!-- Product Sejumlah 12  -->
 				@foreach($katProduks as $katProduk )
 				@php
-					if (file_exists(public_path('storage/'.$katProduk['foto_produk']))) {
-						$katalogPath = asset('storage/'.$katProduk['foto_produk']);
-					} else $katalogPath = asset('storage/default/noImage.jpeg');
+					if (file_exists(public_path($katProduk['foto_produk']))) {
+						$katalogPath = asset($katProduk['foto_produk']);
+					} else $katalogPath = asset('default/noImage.jpeg');
 				@endphp
 				<div class="col-md-6 col-lg-3 ftco-animate">
 					<div class="product">
@@ -232,7 +210,7 @@
 							<div class="overlay"></div>
 						</a>
 						<div class="text py-3 pb-4 px-3 text-center">
-							<h3><a href="FrensDetail.html" class="text-primary font-weight-bold">{{$katProduk['nama_produk']}}</a></h3>
+							<h3><a href="detail/{{$katProduk['id_produk']}}" class="text-primary font-weight-bold">{{$katProduk['nama_produk']}}</a></h3>
 							{{-- <div class="d-flex ">
 								<div class="rating d-flex m-auto">
 									<p class="text-center">

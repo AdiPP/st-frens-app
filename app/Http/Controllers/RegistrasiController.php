@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\UserFrens;
-use App\Franchise;
-use App\Agen;
+use App\Models\User;
+use App\Models\Franchisor;
+use App\Models\Agen;
 
 class RegistrasiController extends Controller
 {
@@ -38,7 +38,7 @@ class RegistrasiController extends Controller
     public function store(Request $request)
     {
         // dd($request);
-        $user = new UserFrens();
+        $user = new User();
         $user->username = $request->get('username');
         $user->password = $request->get('password');
         $user->jabatan = $request->get('jabatan');
@@ -46,14 +46,14 @@ class RegistrasiController extends Controller
         if ($user->jabatan == 'franchisor') {
 
             if ($ktpPict = $request->file('KTP')) {
-                $pathKTP = $ktpPict->store('ktpPict', 'public');
+                $pathKTP = $ktpPict->store('ktpPict', 'frens');
             }
 
             if ($npwpPict = $request->file('NPWP')) {
-                $pathNPWP = $npwpPict->store('npwpPict', 'public');
+                $pathNPWP = $npwpPict->store('npwpPict', 'frens');
             }
 
-            $franchisor = new Franchise();
+            $franchisor = new Franchisor();
             $franchisor->nama_franchisor = $request->get('name');
             $franchisor->no_tlp = $request->get('noTelepon');
             $franchisor->foto_ktp = $pathKTP;
@@ -66,12 +66,12 @@ class RegistrasiController extends Controller
         } elseif ($user->jabatan == 'agen') {
 
             if ($ktpPict = $request->file('KTP')) {
-                $pathKTP = $ktpPict->store('ktpPict', 'public');
+                $pathKTP = $ktpPict->store('ktpPict', 'frens');
             }
 
             $agen = new Agen();
             $agen->nama = $request->get('name');
-            $agen->alamat = $request->get('alamat');
+            $agen->alamat = 'Purwokerto';
             $agen->alamat_detil = '';
             $agen->foto_ktp = $pathKTP;
             $agen->no_tlp = $request->get('noTelepon');
@@ -86,7 +86,7 @@ class RegistrasiController extends Controller
 
     public function masuk(Request $request) {
 
-        $user = UserFrens::where('username', $request->get('username'))
+        $user = User::where('username', $request->get('username'))
                         ->where('password', $request->get('password'))
                         ->first();
 
@@ -95,12 +95,16 @@ class RegistrasiController extends Controller
         }
 
         if  ($user->jabatan == 'franchisor') {
-            $loginUser = Franchise::where('id_user', $user->id_user)->first();
+            $loginUser = Franchisor::where('id_user', $user->id_user)->first();
             session(['user' => $loginUser]);
+            session(['id_frans' => $loginUser->id_frans]);
+
             return redirect('/session/franchisor');
         } elseif ($user->jabatan == 'agen') {
             $loginUser = Agen::where('id_user', $user->id_user)->first();
             session(['user' => $loginUser]);
+            session(['id_agen' => $loginUser->id_agen]);
+
             return redirect('/session/agen');
         }
 

@@ -28,20 +28,10 @@ class FranchisorController extends Controller
       $agen = [
          'id_agen'=>$id_agen->id_agen,
          'path_foto'=>$id_agen->gambar_lokasi,
-         'bintang'=>$id_agen->bintang($id_agen->id_agen),
          'nama'=>$id_agen->nama,
          'lokasi'=>$id_agen->alamat
       ];   
-      $testimonis = [];
-      foreach ($id_agen->riwayat_agen as $testimoni){
-         $testimonis[]= [
-            'path_foto'=>$testimoni->franchisor->gambar,
-            'bintang'=>$testimoni->nilai,
-            'deskripsi'=>$testimoni->isi,
-            'nama'=>$testimoni->franchisor->nama_franchisor,
-         ];
-      }
-   return view('riwayat_agen',['id_brand'=>$id_brand->id_produk,'id_agen'=>$id_agen->id_agen,'brand'=>$brand,'agen'=>$agen,'testimonis'=>$testimonis]);
+      return view('riwayat_agen',['id_brand'=>$id_brand->id_produk,'id_agen'=>$id_agen->id_agen,'brand'=>$brand,'agen'=>$agen]);
    }
 
    public function konfirmasiAgen(Produk $id_brand,Agen $id_agen,$jawaban)
@@ -66,6 +56,7 @@ class FranchisorController extends Controller
    {
       # code...
       $agens = Agen::daftar_agen_by_frans(session('id_frans'));
+      // dd($agens);
       return view('agen',['agens'=>$agens]);
    }
 

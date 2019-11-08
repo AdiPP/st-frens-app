@@ -10,7 +10,7 @@ class Partnership extends Model
     protected $table = 'partnership';
     protected $primaryKey = 'id_partnership';
     public $timestamps = false;
-
+    protected $fillable = [];
     public function produk(){
         return $this->belongsTo('App\Models\Produk','id_produk','id_produk');
     }

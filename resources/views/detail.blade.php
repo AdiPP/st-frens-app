@@ -18,30 +18,20 @@
 			<div class="row">
 				<div class="col-lg-6 mb-5 ftco-animate">
 					@php
-					if (file_exists(public_path('storage/'.$produk['foto_produk']))) {
-						$produkPath = asset('storage/'.$produk['foto_produk']);
-					} else $produkPath = asset('storage/default/noImage.jpeg');
+					if (file_exists(public_path($produk['foto_produk']))) {
+						$produkPath = asset($produk['foto_produk']);
+					} else $produkPath = public_path('default/noImage.jpeg');
 					@endphp
 					<a href="{{$produkPath}}" class="image-popup"><img src="{{$produkPath}}" class="img-fluid" alt="Colorlib Template"></a>
 				</div>
 				<div class="col-lg-6 product-details pl-md-5 ftco-animate">
 					<h3>{{$produk['nama_produk']}}</h3>
-					<div class="rating d-flex">
-						<p class="text-left mr-4">
-							<a href="#" class="mr-2">5</a>
-							<a href="#"><span class="ion-ios-star"></span></a>
-							<a href="#"><span class="ion-ios-star"></span></a>
-							<a href="#"><span class="ion-ios-star"></span></a>
-							<a href="#"><span class="ion-ios-star"></span></a>
-							<a href="#"><span class="ion-ios-star"></span></a>
-						</p>
-					</div>
 					<p>{{$produk['alamat']}}</p>
 					{{-- <p class="price"><span>{{$brand['harga']}}</span></p> --}}
 					<p>{{$produk['no_hp']}}</p>
 					<p>{{$produk['deskripsi']}}</p>
 					<div class="row mt-4">
-						<p><a href="/daftar_agen" class="btn btn-primary py-3 px-5">Jadi Agen</a></p>
+						<p><a href="/login" class="btn btn-primary py-3 px-5">Jadi Agen</a></p>
 					</div>
 				</div>
 			</div>
@@ -61,9 +51,9 @@
 				<div class="row">
 					@foreach($pakets as $paket)
 					@php
-					if (file_exists(public_path('storage/'.$paket['foto_paket']))) {
-						$paketPath = asset('storage/'.$paket['foto_paket']);
-					} else $paketPath = asset('storage/default/noImage.jpeg');
+					if (file_exists(public_path($paket['foto_paket']))) {
+						$paketPath = asset($paket['foto_paket']);
+					} else $paketPath = public_path('default/noImage.jpeg');
 					@endphp
 					<div class="col-md-6 col-lg-3 ftco-animate">
 						<div class="product">

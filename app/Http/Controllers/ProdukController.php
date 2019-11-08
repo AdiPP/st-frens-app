@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Franchise;
-use App\Produk;
+use App\Models\Franchise;
+use App\Models\Produk;
 
 class ProdukController extends Controller
 {
@@ -45,7 +45,7 @@ class ProdukController extends Controller
         if ($brandPict = $request->file('fotoBrand')) {
 
             // $brandFileName = $this->randName();
-            $pathBrand = $brandPict->store('brandPict', 'public');
+            $pathBrand = $brandPict->store('brandPict', 'frens');
 
             // $brandPict->move('brandPict', $brandFileName);
 
@@ -54,7 +54,7 @@ class ProdukController extends Controller
          if ($patenPict = $request->file('hakPaten')) {
 
             // $patenFileName = $this->randName();
-            $pathPaten = $patenPict->store('patenPict', 'public');
+            $pathPaten = $patenPict->store('patenPict', 'frens');
 
             // $patenPict->move('patenPict', $patenFileName);
 

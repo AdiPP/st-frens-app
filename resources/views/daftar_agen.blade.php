@@ -69,7 +69,7 @@
 
 					<div class="wrap-input100 validate-input" data-validate="Menerima File Gambar">
 						<span class="label-input100">Kota</span>
-						<select class="input100" name="" id="">
+						<select class="input100" name="alamat" id="">
 							<option value="purwokerto">PURWOKERTO</option>
 							<option value="jabodetabek">JABODETABEK</option>
 							<option value="semarang">SEMARANG</option>

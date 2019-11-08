@@ -11,6 +11,12 @@ class Agen extends Model
     protected $primaryKey = 'id_agen';
     public $timestamps = false;
 
+    protected $fillable = [];
+
+    public function produk()
+    {
+    	return $this->belongsToMany('App\Models\Produk', 'partnership', 'id_agen', 'id_produk')->wherePivot('status', 'Diterima');
+    }
     public function partnership(){
         return $this->hasMany('App\Models\Partnership','id_agen','id_agen');
     }

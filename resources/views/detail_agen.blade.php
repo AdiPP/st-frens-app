@@ -16,26 +16,16 @@
     <section class="ftco-section">
 		<div class="container">
 			<div class="row">
+				@php
+					if (file_exists(public_path($produk['foto_produk']))) {
+						$produkPath = asset($produk['foto_produk']);
+					} else $produkPath = asset('default/noImage.jpeg');
+				@endphp
 				<div class="col-lg-6 mb-5 ftco-animate">
-					@php
-					if (file_exists(public_path('storage/'.$produk['foto_produk']))) {
-						$produkPath = asset('storage/'.$produk['foto_produk']);
-					} else $produkPath = asset('storage/default/noImage.jpeg');
-					@endphp
 					<a href="{{$produkPath}}" class="image-popup"><img src="{{$produkPath}}" class="img-fluid" alt="Colorlib Template"></a>
 				</div>
 				<div class="col-lg-6 product-details pl-md-5 ftco-animate">
 					<h3>{{$produk['nama_produk']}}</h3>
-					<div class="rating d-flex">
-						<p class="text-left mr-4">
-							<a href="#" class="mr-2">5</a>
-							<a href="#"><span class="ion-ios-star"></span></a>
-							<a href="#"><span class="ion-ios-star"></span></a>
-							<a href="#"><span class="ion-ios-star"></span></a>
-							<a href="#"><span class="ion-ios-star"></span></a>
-							<a href="#"><span class="ion-ios-star"></span></a>
-						</p>
-					</div>
 					<p>{{$produk['alamat']}}</p>
 					{{-- <p class="price"><span>{{$brand['harga']}}</span></p> --}}
 					<p>{{$produk['no_hp']}}</p>
@@ -71,9 +61,9 @@
 				<div class="row">
 					@foreach($pakets as $paket)
 					@php
-					if (file_exists(public_path('storage/'.$paket['foto_paket']))) {
-						$paketPath = asset('storage/'.$paket['foto_paket']);
-					} else $paketPath = asset('storage/default/noImage.jpeg');
+					if (file_exists(public_path($paket['foto_paket']))) {
+						$paketPath = asset($paket['foto_paket']);
+					} else $paketPath = asset('default/noImage.jpeg');
 					@endphp
 					<div class="col-md-6 col-lg-3 ftco-animate">
 						<div class="product">
@@ -86,7 +76,7 @@
 								@if ($partner != null && $partnership->where('id_agen', Session::get('user')->id_agen)->where('id_produk', $produk['id_produk'])->first()->status == "Diterima")
 									<div class="bottom-area d-flex px-3">
 										<div class="m-auto d-flex">
-											<a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+											<a onclick="pesanPaket({{$paket['id_paket']}},{{session('id_agen')}})" class="buy-now d-flex justify-content-center align-items-center mx-1">
 												<span><i class="ion-ios-cart"></i></span>
 											</a>
 										</div>
@@ -99,12 +89,7 @@
 					@csrf
 				</div>
 				<div id="containerAlert">
-					<!-- <form action="{{route('post_pesan_paket',['id_brand'=>$brand['id_produk']])}}" method="post">
-						<input type="hidden" name="id_paket" value="1">
-						<input type="hidden" name="id_agen" value="{{session('id_agen')}}">
-						<input type="hidden" name="status" value="Menunggu Konfirmasi">
-						<input type="submit" value="Masukan Nilai">
-					</form> -->
+					
 				</div>
 			</div>
 		</section>
@@ -191,7 +176,7 @@
 			formData.append('status', 'Keranjang');
 			formData.append('_token', $("[name='_token']").val());
 
-			fetch("{{route('post_pesan_paket',['id_brand'=>$brand['id_produk']])}}",
+			fetch("{{route('post_pesan_paket',['id_brand'=>$produk['id_produk']])}}",
 				{
 					body: formData,
 					method: "post"

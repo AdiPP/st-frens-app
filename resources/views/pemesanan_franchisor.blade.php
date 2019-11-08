@@ -64,7 +64,7 @@
 									
 									<td class="total">{{$riwayat->jumlah*$riwayat->paket->harga}}</td>
 									<td class="Aksi">
-										@if($riwayat->status=='Menuggu Konfirmasi')
+										@if($riwayat->status=='Menunggu Konfirmasi')
 											<a href="{{route('konfirmasi_pemesanan',['id_pemesanan'=>$riwayat->id_pesan,'jawaban'=>'Terima'])}}" class="btn btn-primary">Terima</a>
 											<a href="{{route('konfirmasi_pemesanan',['id_pemesanan'=>$riwayat->id_pesan,'jawaban'=>'Tolak'])}}" class="btn btn-primary btn-outline-primary">Tolak</a>
 										@else

@@ -15,93 +15,19 @@
     <section class="ftco-section">
 		<div class="container">
 			<div class="row">
+			@php
+						if($agen['path_foto'] != "") {
+							$fotoPath = asset($agen['path_foto']);
+						}else {
+							$fotoPath = asset('default/noImage.jpeg');
+						} 
+					@endphp
 				<div class="col-lg-6 mb-5 ftco-animate">
-					<a href="{{asset($agen['path_foto'])}}" class="image-popup"><img src="{{asset($agen['path_foto'])}}" class="img-fluid" alt="Colorlib Template"></a>
+					<a href="{{$fotoPath}}" class="image-popup"><img src="{{$fotoPath}}" class="img-fluid" alt="Colorlib Template"></a>
 				</div>
 				<div class="col-lg-6 product-details pl-md-5 ftco-animate">
 					<h3>{{$agen['nama']}}</h3>
-					<div class="rating d-flex">
-						<p class="text-left mr-4">
-              @if($agen['bintang'] == 0)
-								<a href="#" class="mr-2">0</a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-							@elseif($agen['bintang'] == 0.5)
-								<a href="#" class="mr-2">0.5</a>									
-								<a href="#"><span class="ion-ios-star-half"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-							@elseif($agen['bintang'] == 1)
-								<a href="#" class="mr-2">1</a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-							@elseif($agen['bintang'] == 1.5)
-								<a href="#" class="mr-2">1.5</a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star-half"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-							@elseif($agen['bintang'] == 2)
-								<a href="#" class="mr-2">2</a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-							@elseif($agen['bintang'] == 2.5)
-								<a href="#" class="mr-2">2.5</a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star-half"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-							@elseif($agen['bintang'] == 3)
-								<a href="#" class="mr-2">3</a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-							@elseif($agen['bintang'] == 3.5)
-								<a href="#" class="mr-2">3.5</a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star-half"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-							@elseif($agen['bintang'] == 4)
-								<a href="#" class="mr-2">4</a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star-outline"></span></a>
-							@elseif($agen['bintang'] == 4.5)
-								<a href="#" class="mr-2">4.5</a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star-half"></span></a>
-							@else
-								<a href="#" class="mr-2">5</a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-								<a href="#"><span class="ion-ios-star"></span></a>
-							@endif
-						</p>
-					</div>
+					
 					<p>{{$agen['lokasi']}}</p>
 					<div class="row mt-4 justify-content-around">
 						<p><a href="{{route('konfirmasi_agen',['id_brand'=>$id_brand,'id_agen'=>$id_agen])}}/tolak" class="btn btn-primary btn-outline-primary py-3 px-5">Tolak Agen</a></p>
@@ -111,7 +37,7 @@
 			</div>
 		</section>
 
-	<section class="ftco-section testimony-section">
+{{--	<section class="ftco-section testimony-section">
 		<div class="container">
 			<div class="row justify-content-center mb-5 pb-3">
 				<div class="col-md-7 heading-section ftco-animate text-center">
@@ -226,5 +152,5 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section>--}}
 @endsection	

@@ -43,9 +43,46 @@ return [
 
     'disks' => [
 
+        'brand' =>[
+            'driver' => 'local',
+            'root' => storage_path('..').'/public/brandPict',
+            'url' => env('APP_URL'),
+        ],
+
+        'ktp' =>[
+            'driver' => 'local',
+            'root' => storage_path('..').'/public/ktpPict',
+            'url' => env('APP_URL'),
+        ],
+
+        'npwp' =>[
+            'driver' => 'local',
+            'root' => storage_path('..').'/public/npwpPict',
+            'url' => env('APP_URL'),
+        ],
+
+        'paket' =>[
+            'driver' => 'local',
+            'root' => storage_path('..').'/public/paketPict',
+            'url' => env('APP_URL'),
+        ],
+
+        'paten' =>[
+            'driver' => 'local',
+            'root' => storage_path('..').'/public/patenPict',
+            'url' => env('APP_URL'),
+        ],
+
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app'),
+        ],
+
+        'frens' => [
+            'driver' => 'local',
+            'root' => storage_path('..').'/public/',
+            'url' => env('APP_URL'),
+            'visibility' => 'public',
         ],
 
         'public' => [

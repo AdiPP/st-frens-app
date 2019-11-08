@@ -10,7 +10,8 @@ class Franchisor extends Model
     protected $table = 'franchisor';
     protected $primaryKey = 'id_frans';
     public $timestamps = false;
-
+    protected $fillable = [];
+    
     public function user(){
         return $this->belongsTo('App\Models\User','id_user','id_user');
     }
